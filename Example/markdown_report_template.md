@@ -2,14 +2,12 @@
 ---
 author: "Marc Weber"
 title: "Markdown template for scientific report using pandoc"
-date: 2017.05.15
+date: 2017.09.26
 link-citations: "true"
-css: "/mnt/isilon/Research_Dropbox/Python_mwTools/.pandoc/pandoc.css"
-bibliography: "/mnt/isilon/Research_Dropbox/Bibliography/library.bib"
-#css: "/users/lserrano/mweber/Research_Dropbox/Python_mwTools/.pandoc/pandoc.css"
-#bibliography: "/users/lserrano/mweber/Research_Dropbox/Bibliography/library.bib"
-wordpress_site_url: "www.marcweber.net/labnotebook"
-wordpress_username: "mweber"
+css: "../CSS/pandoc.css"
+bibliography: "bibliography.bib"
+wordpress_site_url: "www.wordpress.org/site"
+wordpress_username: "username"
 wordpress_status: "draft"
 wordpress_update_post_if_exists: "true"
 wordpress_use_quicklatex: "true"
@@ -34,7 +32,7 @@ Resources:
 
 Citations are managed by the `pandoc-citeproc`  package (see [pandoc manual section about citations](http://pandoc.org/MANUAL.html#citations)). The use is as follows, now I want to insert an inline citation here: @Gillespie1977. A citation in square brackets format it with parenthesis: [@Miller1965]. Then, I could also use a grouped citations to multiple references like this: [@Danino2010;@Prindle2012]. We can also use citations in footnotes ^[Si2017].
 
-Citations go inside square brackets and are separated by semicolons. Each citation must have a key, composed of ‘@’ + the citation identifier from the database, and may optionally have a prefix, a locator, and a suffix. To make your citations hyperlinks to the corresponding bibliography entries, add link-citations: true to your YAML metadata. 
+Citations go inside square brackets and are separated by semicolons. Each citation must have a key, composed of ‘@’ + the citation identifier from the database, and may optionally have a prefix, a locator, and a suffix. To make your citations hyperlinks to the corresponding bibliography entries, add `link-citations: true` to your YAML metadata. 
 
 # Outline header 1
 
@@ -53,7 +51,7 @@ This is the outline text with a short list. This is the outline text with a shor
   + subitem 1
   + subitem 2
   
-**Important note**: we need an empty line just *before* the list for pandoc markdown.
+**Important note**: we need an empty line just *before* the list for pandoc markdown. In other markdown flavors this is not necessary.
 
 We also test here the "citation" html tag: <cite>This is a short citation but we probably could use the quote tag for this, so it seems redundant.</cite>.
 
@@ -270,7 +268,7 @@ pandoc style with fignos package:
 
 # Styling
 
-The HTML outputs are styled with custom CSS sheet. I used the package MegaType (SCSS template) to define all font sizes and line heights of the different elements in order to create a vertical rhythm, aligning the text baseline on a baseline grid.
+The HTML outputs are styled with custom CSS sheet. I used the package MegaType (SCSS template) to create a responsive design and define all font sizes and line heights of the different elements in order to create a (almost perfect) vertical rhythm, aligning the text baseline on a baseline grid.
 
 ![Baseline grid on desktop device, google chrome.](Images/screenshot_desktop.png){width=80%}
 
@@ -284,4 +282,4 @@ More information:
 
 # Bibliography
 
-This header is not automatically included by pandoc.
+Note: the Bibliography header is not automatically included by pandoc.
