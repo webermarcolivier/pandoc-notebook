@@ -1,0 +1,379 @@
+#!/usr/bin/env python3
+
+"""
+This script uses pandoc to convert a markdown file to HTML, applies filters to adapt and correct
+HTML tags (code highlighting, figure captions, etc) to the wordpress environment, and uploads
+the document as a new post to the wordpress server.
+
+Filters for wordpress:
+- images with wordpress fullsize class and link to open image in lightbox
+- correct figure captions
+- code highlighting with Crayon
+- latex tags with QuickLatex
+- table of contents
+"""
+
+from wordpress_xmlrpc import Client, WordPressPost
+from wordpress_xmlrpc.methods.posts import NewPost, EditPost, GetPosts
+from wordpress_xmlrpc.compat import xmlrpc_client
+from wordpress_xmlrpc.methods import media, posts
+from xmlrpc.client import Transport
+
+try:
+    from configparser import ConfigParser
+except ImportError:
+    from ConfigParser import ConfigParser
+from io import StringIO
+import panflute as pf
+from os import path
+import mimetypes
+import argparse
+import getpass
+import frontmatter
+import shlex
+import re
+import regex
+from bs4 import BeautifulSoup, NavigableString
+import html
+
+
+wp = None
+postfile = ''
+
+
+# class CustomTransport(Transport):
+#     """This is to fix a bug in the parsing of client http response,
+#     see https://github.com/maxcutler/python-wordpress-xmlrpc/issues/101
+#     """
+
+#     def parse_response(self, response):
+#         # read response data from httpresponse, and parse it
+
+#         # Check for new http response object, else it is a file object
+#         if hasattr(response, 'getheader'):
+#             if response.getheader("Content-Encoding", "") == "gzip":
+#                 # stream = GzipDecodedResponse(response)
+#                 stream = response
+#             else:
+#                 stream = response
+#         else:
+#             stream = response
+
+#         p, u = self.getparser()
+#         print("response:\n", response)
+
+#         while 1:
+#             data = stream.read(1024)
+#             data = data.strip()
+#             if not data:
+#                 break
+#             if self.verbose:
+#                 print("body:", repr(data))
+#             p.feed(data)
+
+#         if stream is not response:
+#             stream.close()
+#         p.close()
+
+#         return u.close()
+
+
+def imageURLs(elem, doc):
+    """
+    Panflute filter for Image URLs.
+    Checks if the URLs are relative paths and match an image file. If they do,
+    it uploads the image and changes the URL to point to that.
+    """
+
+    if isinstance(elem, pf.Image):
+        # Handles paths if they are relative to the post
+        here = path.dirname(postfile)
+        url = path.join(here, elem.url)    # Make path absolute
+        mime = checkImage(url)
+        res = uploadFile(url, mime)
+        elem.url = res['url']
+
+        return elem
+
+
+def codeBlocks(elem, doc):
+    """
+    If input is a CodeBlock, just tag it as a code piece and put the language.
+    WordPress can handle the highlighting. We use the <pre class="lang:python"></pre>
+    syntax.
+    """
+    if isinstance(elem, pf.CodeBlock):
+        content = elem.text
+        language = None
+        if len(elem.classes) >= 1:
+            language = elem.classes[0]
+            # Crayon plugin uses `sh`, but `bash` alias does not work
+            language = 'sh' if language == 'bash' else language
+
+        # For some weird reason the Crayon plugin likes better a newline just before the <pre> block.
+        block = '\n<pre class="'
+        if language:
+            block += 'lang:{} '.format(language)
+        else:
+            # I prefer not to highlight code blocks without any language defined
+            # Otherwise Crayon will use the fallback highlighting which is similar to C
+            # This is not very clever if we want to print a simple plain text block.
+            block += 'highlight:0 '
+        block += 'decode:true ">\n{}\n</pre>\n'.format(content)
+
+        return pf.RawBlock(block)
+
+
+def codeInline(elem, doc):
+    """
+    If input is a CodeBlock, put it in a `<span>` tag with crayon-inline and language class attributes.
+    WordPress Crayon handles the highlighting.
+    """
+    if isinstance(elem, pf.Code):
+        content = elem.text
+        # Escape all html special characters, such that we don't have any problems
+        # with <, >, and quotes in the code content
+        content = html.escape(content, quote=True)
+        
+        language = None
+        if len(elem.classes) >= 1:
+            language = elem.classes[0]
+
+        block = '<span class="'
+        if language:
+            block += 'lang:{} '.format(language)
+        else:
+            # I prefer not to highlight code blocks without any language defined
+            # Otherwise Crayon will use the fallback highlighting which is similar to C
+            # This is not very clever if we want to print a simple plain text block.
+            block += 'highlight:0 '
+        block += 'decode:true  crayon-inline ">{}</span>'.format(content)
+
+        return pf.RawInline(block)
+
+
+def checkImage(url):
+    """
+    Checks if image path exists and if it's an image.
+    @returns mime MIME type of the image or `None` if it's not an image.
+    """
+    if not path.exists(url):
+        return
+    mime = mimetypes.guess_type(url, strict=True)[0]
+    if not mime.split('/')[0] == 'image':
+        # It's not an image!
+        return
+    return mime
+
+
+def uploadFile(url, mime):
+    """
+    Uploads files to Wordpress
+    @returns response {
+      'id': 6,
+      'file': 'picture.jpg'
+      'url': 'http://www.example.com/wp-content/uploads/2012/04/16/picture.jpg',
+      'type': 'image/jpeg',
+    }
+    """
+    data = {}
+    data['name'] = path.basename(url)
+    data['type'] = mime
+    print("Uploading filename:", data['name'], "type:", data['type'], " at path:", url)
+    with open(url, 'rb') as f:
+        data['bits'] = xmlrpc_client.Binary(f.read())
+
+    response = wp.call(media.UploadFile(data))
+    return response
+
+
+def find_id(title):
+    offset = 0
+    increment = 10
+    while True:
+        p = wp.call(GetPosts({'offset':offset, 'number':increment}))
+        if len(p) == 0:
+            break  # no more posts returned
+        for post in p:
+            if post.title == title:
+                return(post.id)
+        offset = offset + increment
+    return False
+
+
+
+if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument('mdfile', type=str)
+    parser.add_argument('pandoc_args', nargs='*', type=list)
+    args = parser.parse_args()
+    mdfile = args.mdfile
+    pandoc_args = args.pandoc_args
+    # The `no-highlight` option disable syntax highlighting. On the wordpress site,
+    # syntax highlighting is handled by the specific wordpress plugins (Crayon).
+    pandoc_args = shlex.split('--no-highlight --filter pandoc-fignos --filter pandoc-citeproc --mathjax')
+    # pandoc_args_without_fignos = shlex.split(re.sub(r'--filter\s+pandoc-fignos', r' ', " ".join(pandoc_args)))
+
+    print("WARNING: This scripts will upload a new post to the wordpress server and will OVERWRITE any post with the same exact TITLE.")
+
+    # Ask password to the user:
+    password = getpass.getpass("Wordpress password:")
+
+    # Parse the markdown file and extract YAML configuration for wordpress server
+
+    postconfig = ''
+    postcontent = ''
+
+    md = frontmatter.load(mdfile)
+
+    terms_names = {}
+    tags = md.get('wordpress_tags', [])
+    if len(tags) > 0:
+        terms_names['post_tag'] = map(lambda x: x.strip(),tags.split(','))
+    else:
+        terms_names['post_tag'] = []
+
+    categories = md.get('wordpress_categories', [])
+    if len(categories) > 0:
+        terms_names['category'] = map(lambda x: x.strip(),tags.split(','))
+    else:
+        terms_names['category'] = []
+
+    post_status = md.get('wordpress_status', 'draft')
+
+    update_post_if_exists = md.get('wordpress_update_post_if_exists', True)
+    postId = md.get('wordpress_post_id', False)
+
+    url = md['wordpress_site_url']
+    url = 'https://' + url + '/xmlrpc.php'
+
+    username = md['wordpress_username']
+
+    useQuickLatex = md.get('wordpress_use_quicklatex', True)
+
+    addTOC = md.get('wordpress_toc', False)
+
+    title = md.get('title', 'New post from markdown')
+
+    postcontent = md.content
+    postFullMarkdown = str(frontmatter.dumps(md))
+
+    # thumb_url = None
+    # if config.has_option('wordpress','thumbnail'):
+    #     thumbnail = config.get('wordpress', 'thumbnail')
+    #     here = path.dirname( postfile )
+    #     thumb_url = path.join( here, thumbnail ) # Make path absolute
+
+    # Wordpress related, create the post
+    wp = Client(url, username, password)
+    post = WordPressPost()
+
+    # Take markdown, convert to HTML and put it as post content
+    # Makes intermediate convertion to Panflute AST to apply the filters.
+    postdocument = pf.convert_text(postFullMarkdown,
+                                   input_format='markdown',
+                                   output_format='panflute',
+                                   standalone=True,
+                                   extra_args=pandoc_args)
+
+    pf.run_filters([imageURLs, codeBlocks, codeInline], doc=postdocument)
+
+    content = pf.convert_text(postdocument,
+                              input_format='panflute',
+                              output_format='html',
+                              extra_args=shlex.split('--no-highlight --mathjax'))
+
+    # # Only the html body is necessary in the wordpress post content
+    # Now we only have the html body from the Panflute conversion, I don't know why before we had full html with header
+
+    # Adapt the img tags to the wordpress fullsize class and add link to open image in lightbox
+    def change_html_img_to_wordpress_fullsize_class(postHTML):
+        soup = BeautifulSoup(postHTML, 'html5lib')
+        for img in soup.find_all("img"):
+            img['class'] = "alignnone size-full"
+            ahref = soup.new_tag("a")
+            ahref['href'] = img['src']
+            img.wrap(ahref)
+        return str(soup)
+
+    content = change_html_img_to_wordpress_fullsize_class(content)
+
+    # Correct duplicate title in figure captions such as "Figure 1: Figure 1:"
+    def remove_duplicated_figure_caption_title(postHTML):
+        soup = BeautifulSoup(postHTML, 'html5lib')
+        for caption in soup.find_all(name="p", attrs={'class':'caption'}):
+            newCaption = regex.sub(r'\s*([Ff]ig.+?:\s*)+(.*)', r'\1\2', caption.text)
+            caption.string = newCaption
+        return str(soup)
+
+    content = remove_duplicated_figure_caption_title(content)
+
+
+    def add_quicklatex_support(postHTML):
+        soup = BeautifulSoup(postHTML, 'html5lib')
+        soup.body.insert(0, NavigableString('[latexpage]'))
+        # With the Mathjax option in the pandoc conversion, inline math is converted to
+        # `<span class="math inline">\(\exp(e^{\tau)} &lt; 1\)</span>`
+        # display math is converted into
+        # `<span class="math display">\[\exp(e^{\tau)} &lt; 1\]</span>`
+        # and environment are left untouched
+        # `\begin{align} ... \end{align}`
+        # All these latex tags are already compatible with the QuickLatex syntax,
+        # so there is no need to adapt them
+        return str(soup)
+
+    if useQuickLatex:
+        content = add_quicklatex_support(content)
+
+
+    def add_toc_shortcode(postHTML):
+        soup = BeautifulSoup(postHTML, 'html5lib')
+        soup.body.insert(0, NavigableString('[toc]'))
+        return str(soup)
+
+    if addTOC:
+        content = add_toc_shortcode(content)
+
+    # The following is NOT included in the wordpress post, only in the self-contained html.
+    def add_container(postHTML):
+        """Add responsive container to control text maximum width."""
+        soup = BeautifulSoup(postHTML, 'html5lib')
+        soup.body.string.wrap(soup.new_tag('div', **{'class':'column'}))
+        soup.body.string.wrap(soup.new_tag('div', **{'class':'container'}))
+        return str(soup)
+
+    # Only export the html body as wordpress post content
+    soup = BeautifulSoup(content, 'html.parser')
+    content = str(soup.body)
+    content = re.sub(r'<body>(\n)?(.*)</body>', r'\2', content, re.MULTILINE, re.DOTALL)
+
+    # Set post metadata
+    post.title = title
+    post.content = content
+    post.post_status = post_status
+    post.terms_names = terms_names
+
+    # if not thumb_url == None:
+    #     thumb_mime = checkImage(thumb_url)
+    #     if not thumb_mime == None:
+    #         response = uploadFile(thumb_url, thumb_mime)
+    #         post.thumbnail = response['id']
+
+    print("warning: for some reason we get an error of the type ProtocolError 500 Internal Server Error, however the post gets correctly created or updated.")
+    if postId:
+        print("Updating post: " + postId)
+        wp.call(EditPost(postId, post))
+    else:
+        postId = find_id(post.title)
+        if postId:
+            if update_post_if_exists:
+                # If post with the same title exists, we update the content
+                print("Updating post: " + post.title)
+                wp.call(EditPost(postId, post))
+            else:
+                print("Sorry, we already have such a post (with the same title):", postId)
+        else:
+            print("New post:", post.title)
+            wp.call(NewPost(post))

@@ -1,0 +1,1804 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"css",
+				"cssContentScaled"
+			],
+			[
+				"in",
+				"insert_before"
+			],
+			[
+				"overflo",
+				"overflow-x"
+			],
+			[
+				"overflow",
+				"overflow-y"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"over",
+				"overflow-y"
+			],
+			[
+				"overfl",
+				"overflow-y"
+			],
+			[
+				"backgrou",
+				"background-color"
+			],
+			[
+				"border",
+				"border-style"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"pan",
+				"pandoc"
+			],
+			[
+				"p",
+				"pandoc"
+			],
+			[
+				"new",
+				"new_tag\tfunction"
+			],
+			[
+				"conv",
+				"convert_strand_numeric_to_strand_string\tfunction"
+			],
+			[
+				"add",
+				"addTOC\tstatement"
+			],
+			[
+				"M",
+				"MULTILINE\tstatement"
+			],
+			[
+				"exi",
+				"existingPostId\tstatement"
+			],
+			[
+				"up",
+				"update_post_if_exists\tstatement"
+			],
+			[
+				"check",
+				"check_output\tfunction"
+			],
+			[
+				"get",
+				"get_argparse"
+			],
+			[
+				"ribo",
+				"riboseq_data"
+			],
+			[
+				"DNA",
+				"DNAseqIdList\tparam"
+			],
+			[
+				"body",
+				"bodyWidthInches\tstatement"
+			],
+			[
+				"headW",
+				"headWidthInches\tstatement"
+			],
+			[
+				"headL",
+				"headLengthInches\tstatement"
+			],
+			[
+				"head",
+				"headLengthData\tstatement"
+			],
+			[
+				"mutation",
+				"mutation_scale\tparam"
+			],
+			[
+				"min",
+				"minHeadLength\tstatement"
+			],
+			[
+				"autom",
+				"automaticHeadLength\tstatement"
+			],
+			[
+				"arrow",
+				"arrow_pos\tstatement"
+			],
+			[
+				"curren",
+				"current_y\tstatement"
+			],
+			[
+				"muta",
+				"mutation_scale\tparam"
+			],
+			[
+				"arro",
+				"arrow_direction\tstatement"
+			],
+			[
+				"FancyArro",
+				"FancyArrowPatch\tclass"
+			],
+			[
+				"en",
+				"endCol\tparam"
+			],
+			[
+				"codon",
+				"codonList\tstatement"
+			],
+			[
+				"outp",
+				"output_folder"
+			],
+			[
+				"out",
+				"outputDir\tparam"
+			],
+			[
+				"start",
+				"startCol\tparam"
+			],
+			[
+				"chr",
+				"chromosome"
+			],
+			[
+				"same",
+				"sameGenomeGenbank\tstatement"
+			],
+			[
+				"gou",
+				"groupCDSDf\tstatement"
+			],
+			[
+				"full",
+				"full_analysis_multispecies"
+			],
+			[
+				"oddsR",
+				"oddsRatioCtermTaxon\tstatement"
+			],
+			[
+				"jobs",
+				"jobs_unfinished_taxid_index_list\tstatement"
+			],
+			[
+				"st",
+				"strip"
+			],
+			[
+				"analysis",
+				"analysisEggnogPath\tstatement"
+			],
+			[
+				"taxonGr",
+				"taxonGroupEnrichDf\tstatement"
+			],
+			[
+				"custom",
+				"customFontSize"
+			],
+			[
+				"set_",
+				"set_size\tfunction"
+			],
+			[
+				"fon",
+				"fontProp\tstatement"
+			],
+			[
+				"Coum",
+				"CompoundLocation\tclass"
+			],
+			[
+				"E",
+				"ExactPosition\tclass"
+			],
+			[
+				"feat",
+				"feat_draw\tstatement"
+			],
+			[
+				"fontpr",
+				"fontproperties\tparam"
+			],
+			[
+				"char",
+				"charTuple\tforstmt"
+			],
+			[
+				"Te",
+				"TextSequence\tclass"
+			],
+			[
+				"ren",
+				"renderer"
+			],
+			[
+				"T",
+				"Text"
+			],
+			[
+				"pyl",
+				"pyplot\tmodule"
+			],
+			[
+				"save",
+				"savefig"
+			],
+			[
+				"track_",
+				"track_num"
+			],
+			[
+				"py",
+				"pyplot\tmodule"
+			],
+			[
+				"ex",
+				"extract_fasta_id"
+			],
+			[
+				"ge",
+				"genbank"
+			],
+			[
+				"nthre",
+				"nthreads"
+			],
+			[
+				"RRNA",
+				"RRNA_BEDFILE"
+			],
+			[
+				"wait",
+				"wait_for_file\tfunction"
+			],
+			[
+				"filename",
+				"filenameList"
+			],
+			[
+				"sle",
+				"sleepTimeFilesystem\tstatement"
+			],
+			[
+				"genom",
+				"genomeCDSBedFile"
+			],
+			[
+				"rRN",
+				"rRNA_bedfile"
+			],
+			[
+				"inde",
+				"indexedGenomePath\tstatement"
+			],
+			[
+				"ref",
+				"refOutputDir"
+			],
+			[
+				"refO",
+				"refOutputPath\tstatement"
+			],
+			[
+				"NC_",
+				"NC_000912"
+			],
+			[
+				"form",
+				"formatter_class\tstatement"
+			],
+			[
+				"for",
+				"formatter_class\tparam"
+			],
+			[
+				"html",
+				"htmlText\tstatement"
+			],
+			[
+				"_",
+				"__name__\tinstance"
+			],
+			[
+				"pipe",
+				"pipeline-name"
+			],
+			[
+				"Mycopl",
+				"Mycoplasma_pneumoniae"
+			],
+			[
+				"run",
+				"run-locally"
+			],
+			[
+				"pipeline",
+				"pipeline_roesti_3"
+			],
+			[
+				"load",
+				"load_dependencies"
+			],
+			[
+				"ou",
+				"output_dir"
+			],
+			[
+				"group",
+				"groupKey\tforstmt"
+			],
+			[
+				"ana",
+				"analysisOutputPath\tstatement"
+			],
+			[
+				"simpl",
+				"simplify_prefix"
+			],
+			[
+				"taxa",
+				"taxaIdList\tstatement"
+			],
+			[
+				"port",
+				"port_shift"
+			],
+			[
+				"N",
+				"NFILES"
+			],
+			[
+				"spcies",
+				"speciesSetName\tparam"
+			],
+			[
+				"tax",
+				"taxonSuffix\tstatement"
+			],
+			[
+				"reads",
+				"reads_bed_file\tstatement"
+			],
+			[
+				"hom",
+				"homePath\tstatement"
+			],
+			[
+				"num",
+				"numLines\tstatement"
+			],
+			[
+				"input",
+				"input_files\tparam"
+			],
+			[
+				"bed",
+				"bed_filename\tstatement"
+			],
+			[
+				"inp",
+				"input_path\tstatement"
+			],
+			[
+				"FIL",
+				"FILTER_FLAGS"
+			],
+			[
+				"filter",
+				"FILTER_FLAGS"
+			],
+			[
+				"nRe",
+				"nRemovedReads\tstatement"
+			],
+			[
+				"Sys",
+				"SystemExit\tclass"
+			],
+			[
+				"fastq",
+				"fastqFiles\tstatement"
+			],
+			[
+				"fast",
+				"fastqFilesPE\tstatement"
+			],
+			[
+				"summary",
+				"summaryFilename\tstatement"
+			],
+			[
+				"inpu",
+				"input_file"
+			],
+			[
+				"read1F",
+				"read1FastaBasename\tstatement"
+			],
+			[
+				"seq",
+				"seq-end"
+			],
+			[
+				"file",
+				"filename\tparam"
+			],
+			[
+				"System",
+				"SystemExit\tclass"
+			],
+			[
+				"return",
+				"return_copy\tparam"
+			],
+			[
+				"chunk",
+				"chunkSize\tparam"
+			],
+			[
+				"bio",
+				"bio\tmodule"
+			],
+			[
+				"gene",
+				"general\tmodule"
+			],
+			[
+				"stat",
+				"statList"
+			],
+			[
+				"multi",
+				"multispeciesStatistics"
+			],
+			[
+				"statisti",
+				"statisticsSummary"
+			],
+			[
+				"statist",
+				"statisticsConverted"
+			],
+			[
+				"sta",
+				"statistics"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "pandoc.scss",
+			"settings":
+			{
+				"buffer_size": 10177,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "pandoc.css",
+			"settings":
+			{
+				"buffer_size": 11777,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_config.scss",
+			"settings":
+			{
+				"buffer_size": 2796,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "pandoc_12px.scss",
+			"settings":
+			{
+				"buffer_size": 7888,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/mnt/isilon/Research_Dropbox/Python_mwTools/SASS/megatype-master/megatype/_container.scss",
+			"settings":
+			{
+				"buffer_size": 909,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/mnt/isilon/Research_Dropbox/Python_mwTools/SASS/megatype-master/megatype/_config.scss",
+			"settings":
+			{
+				"buffer_size": 4721,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/mnt/isilon/Research_Dropbox/Python_mwTools/SASS/megatype-master/megatype.scss",
+			"settings":
+			{
+				"buffer_size": 1145,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/mnt/isilon/Research_Dropbox/Labnotebook/markdown_report_template.self-contained.html",
+			"settings":
+			{
+				"buffer_size": 943708,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/mnt/isilon/Research_Dropbox/Labnotebook/markdown_report_template.md",
+			"settings":
+			{
+				"buffer_size": 16595,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/mnt/isilon/Research_Dropbox/Python_mwTools/md2wordpress",
+			"settings":
+			{
+				"buffer_size": 12627,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/mnt/isilon/Research_Dropbox/Python_mwTools/pandoc-notebook",
+			"settings":
+			{
+				"buffer_size": 1992,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/mnt/isilon/Research_Dropbox/Thesis/Version10.0 (final)/classicthesis-config.tex",
+			"settings":
+			{
+				"buffer_size": 17128,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/mnt/isilon/Research_Dropbox/Python_mwTools/mdCorrectFigureCaption",
+			"settings":
+			{
+				"buffer_size": 486,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/mnt/isilon/Research_Dropbox/Python_mwTools/insert_mathjax_script_in_html_header",
+			"settings":
+			{
+				"buffer_size": 1076,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/default.html",
+			"settings":
+			{
+				"buffer_size": 1725,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/default.html5",
+			"settings":
+			{
+				"buffer_size": 1652,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/mnt/isilon/Research_Dropbox/Python_mwTools/SASS/megatype-master/megatype/test/_defaults.scss",
+			"settings":
+			{
+				"buffer_size": 7645,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "wordpress.css",
+			"settings":
+			{
+				"buffer_size": 7690,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "wordpress.scaled.css",
+			"settings":
+			{
+				"buffer_size": 10167,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "scale_rem_values.py",
+			"settings":
+			{
+				"buffer_size": 731,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "!#/bin/env python3"
+			}
+		},
+		{
+			"file": "wordpress_12px.css",
+			"settings":
+			{
+				"buffer_size": 6390,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 113.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"markdown",
+				"Markdown Preview: Save to HTML"
+			],
+			[
+				"mark",
+				"Preferences: MarkdownEditing Settings – Default"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"add",
+				"Package Control: Add Repository"
+			],
+			[
+				"color",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"install package",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"sublime.log_commands(False)",
+			"sublime.log_commands(True)",
+			"sublime.log_input(True)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/SASS",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/SASS/custom_megatype",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/SASS/megatype-master",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/SASS/megatype-master/megatype",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/SASS/megatype-master/megatype/test",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/SASS/megatype-master/megatype/toolsets"
+	],
+	"file_history":
+	[
+		"/mnt/isilon/Research_Dropbox/Translational_regulation_model/results/2017.05.00 report SILAC2016 protein half-life/2017.05.00 report SILAC2016 protein half-life.self-contained.html",
+		"/mnt/isilon/Research_Dropbox/Translational_regulation_model/results/2017.04.12 report ribosome profiling/2017.04.12 report ribosome profiling.self-contained.html",
+		"/mnt/isilon/Research_Dropbox/Translational_regulation_model/src/analysis_ribosome_profiling.py",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/.pandoc/wordpress.css",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/.pandoc/pandoc.scss",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/.pandoc/pandoc.css",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/md2wordpress",
+		"/mnt/isilon/Research_Dropbox/RNA-seq_data_analysis/doc/pipeline_roesti_3_tutorial.md",
+		"/mnt/isilon/Research_Dropbox/RNA-seq_data_analysis/doc/pipeline_roesti_3_tutorial.self-contained.html",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/.pandoc/templates/default.html",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/.pandoc/templates/default.html5",
+		"/mnt/isilon/Research_Dropbox/Labnotebook/markdown_report_template.self-contained.html",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/SASS/custom_megatype_output/index.html",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/.pandoc/_config.scss",
+		"/usr/share/applications/firefox.desktop",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/.pandoc/_config_wordpress.scss",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/parse_sublime_markdown_preview_html_for_wordpress.py",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/SASS/custom_megatype/_config.scss",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/SASS/custom_megatype/test.scss",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/SASS/custom_megatype_output/test.css",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/SASS/megatype-master/megatype.css",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/SASS/megatype-master/test/fixtures/test.scss",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/.pandoc/pandoc.css.backup",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/mwTools/bio.py",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/mwTools/mpn_annotation_tools.py",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/mwTools/id.py",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/SASS/razwan_baseline.scss",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/SASS/10662500",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/pandoc-notebook",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/insert_mathjax_script_in_html_header",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/CSS_for_scientific_reports/pure_starter_kit_index.html",
+		"/mnt/isilon/Research_Dropbox/Labnotebook/markdown_report_template.md",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/mdCorrectFigureCaption",
+		"/mnt/isilon/Research_Dropbox/Translational_regulation_model/results/2017.04.12 report ribosome profiling/test.md",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/.pandoc/responsive1.css",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/CSS_for_scientific_reports/pandoc.css",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/.pandoc/default.html5",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/pandoc_template.html5",
+		"/mnt/isilon/Research_Dropbox/Labnotebook/markdown_report_template.self-contained.backup.html",
+		"/mnt/isilon/Research_Dropbox/Translational_regulation_model/results/2017.04.12 report ribosome profiling/2017.04.12 report ribosome profiling.md",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/CSS_for_scientific_reports/pure-release-0.6.2/pure.css",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/CSS_for_scientific_reports/pure-release-0.6.2/grids-responsive.css",
+		"/home/mweber/Downloads/css/layouts/blog.css",
+		"/mnt/isilon/Research_Dropbox/Labnotebook/pandoc.css",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/CSS_for_scientific_reports/pure-release-0.6.2/base.css",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/CSS_for_scientific_reports/pure-release-0.6.2/grids.css",
+		"/home/mweber/.config/sublime-text-3/Packages/User/MarkdownPreview.sublime-settings",
+		"/mnt/isilon/Research_Dropbox/Mycoplasma_pneumoniae_experimental_data/Annotation/NC_000912.1_updated_annotations.gbff",
+		"/mnt/isilon/Research_Dropbox/Mycoplasma_pneumoniae_experimental_data/Annotation/mpn_CDS.bed",
+		"/mnt/isilon/Research_Dropbox/C-terminal/src/cterminal.py",
+		"/mnt/isilon/Research_Dropbox/Labnotebook/markdown_report_template.md.html",
+		"/mnt/isilon/Research_Dropbox/Labnotebook/markdown_report_template.no-highlight.html",
+		"/mnt/isilon/Research_Dropbox/Labnotebook/pandoc_script.sh",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/notebook2md.py",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/md2wordpress.py",
+		"/mnt/isilon/Research_Dropbox/Labnotebook/markdown_report_template.html",
+		"/mnt/isilon/Research_Dropbox/Translational_regulation_model/results/2017.04.12 report ribosome profiling/2017.04.12 report ribosome profiling.html",
+		"/mnt/isilon/Research_Dropbox/Translational_regulation_model/results/2017.04.12 report ribosome profiling/2017.04.12 report ribosome profiling.tex",
+		"/mnt/isilon/Research_Dropbox/Translational_regulation_model/results/2017.04.12 report ribosome profiling/pandoc_script.sh",
+		"/mnt/isilon/Research_Dropbox/RNA-seq_data_analysis/src/pipeline_roesti_3.py",
+		"/mnt/isilon/Research_Dropbox/RNA-seq_data_analysis/src/pipeline_roesti_extract_footprints.py",
+		"/mnt/isilon/Research_Dropbox/RNA-seq_data_analysis/src/pipeline_roesti_extract_footprints.sh",
+		"/mnt/isilon/Research_Dropbox/RNA-seq_data_analysis/src/pipeline_roesti_sort_CDS_BED.sh",
+		"/mnt/isilon/Research_Dropbox/RNA-seq_data_analysis/src/pipeline_roesti_genome_coverage.sh",
+		"/mnt/isilon/Research_Dropbox/Translational_regulation_model/results/2017.04.12 report ribosome profiling/2017.04.12.html",
+		"/mnt/isilon/Research_Dropbox/Translational_regulation_model/results/2017.04.12 report ribosome profiling/2017.04.12.md",
+		"/home/mweber/.config/sublime-text-3/Packages/Markdown Preview/MarkdownPreview.sublime-settings",
+		"/mnt/isilon/Research_Dropbox/Translational_regulation_model/results/2017.04.12 report ribosome profiling/2017.04.12+report+ribosome+profiling.md",
+		"/mnt/isilon/Research_Dropbox/Translational_regulation_model/results/2017.04.12 report ribosome profiling/2017.04.12+report+ribosome+profiling.html",
+		"/home/mweber/Downloads/2017.04.12+report+ribosome+profiling.md",
+		"/mnt/isilon/Translation_model/Ribosome_profiling_data/Mpn/Ribo-seq/rpbp/NC_000912.1/NC_000912.1.annotated.bed.gz",
+		"/mnt/isilon/Translation_model/Ribosome_profiling_data/Mpn/Ribo-seq/rpbp/NC_000912.1_star_index/chrName.txt",
+		"/mnt/isilon/Translation_model/Ribosome_profiling_data/Mpn/Ribo-seq/rpbp/NC_000912.1_star_index/genomeParameters.txt",
+		"/mnt/isilon/Translation_model/Ribosome_profiling_data/Mpn/Ribo-seq/rpbp/NC_000912.1/NC_000912.1.annotated.bed",
+		"/mnt/isilon/Translation_model/Ribosome_profiling_data/Mpn/Ribo-seq/rpbp/NC_000912.1/transcript-index/NC_000912.1.orfs-exons.annotated.bed",
+		"/mnt/isilon/Translation_model/Ribosome_profiling_data/Mpn/Ribo-seq/rpbp/NC_000912.1_updated_annotations.gtf",
+		"/mnt/isilon/Translation_model/Ribosome_profiling_data/Mpn/Ribo-seq/rpbp/config.yaml",
+		"/mnt/isilon/Translation_model/Ribosome_profiling_data/Mpn/Ribo-seq/rpbp/mpn_rRNA.faa",
+		"/mnt/isilon/Git_repos/BioGraPy/setup.py",
+		"/mnt/isilon/Git_repos/BioGraPy/docs/HISTORY.txt",
+		"/mnt/isilon/Git_repos/BioGraPy/docs/AUTHORS.txt",
+		"/mnt/isilon/Git_repos/BioGraPy/bootstrap.py",
+		"/mnt/isilon/Git_repos/BioGraPy/build/lib/biograpy/features.py",
+		"/mnt/isilon/Git_repos/BioGraPy/src/test.profile",
+		"/mnt/isilon/Git_repos/BioGraPy/src/test_readme.py",
+		"/mnt/isilon/Git_repos/BioGraPy/dist/biograpy-1.0bdev-py2.6.egg",
+		"/mnt/isilon/Git_repos/BioGraPy/src/biograpy/drawer.pyc",
+		"/mnt/isilon/Git_repos/biograpy/DEVELOPERS.txt",
+		"/mnt/isilon/Git_repos/backup.sh",
+		"/mnt/isilon/Research_Dropbox/C-terminal/src/analysis_COG_enrichment.py",
+		"/mnt/isilon/Translation_model/Ribosome_profiling_data/Mpn/Ribo-seq/ribotaper/ribotaper.e19482061",
+		"/mnt/isilon/Translation_model/Ribosome_profiling_data/Mpn/Ribo-seq/ribotaper/ribotaper.o19482061",
+		"/mnt/isilon/Research_Dropbox/RNA-seq_data_analysis/src/pipeline_roesti_3_tutorial.mk",
+		"/mnt/isilon/Research_Dropbox/RNA-seq_data_analysis/src/pipeline_roesti_3_tutorial.html.body",
+		"/mnt/isilon/Software/ribotaper-1.3.1a/examples/annotation_human_daniorerio/head.gtf",
+		"/mnt/isilon/Research_Dropbox/Mycoplasma_pneumoniae_experimental_data/Annotation/NC_000912.1_updated_annotations.gtf",
+		"/mnt/isilon/Research_Dropbox/RNA-seq_data_analysis/src/pipeline_roesti_mean_coverage_per_CDS.py",
+		"/home/mweber/Downloads/ribodeblur-0.1/README.md",
+		"/mnt/isilon/Research_Dropbox/C-terminal/src/analysis_HOGs_parallel.py",
+		"/mnt/isilon/Research_Dropbox/C-terminal/src/run_COG_group_bias_parallel.sh",
+		"/mnt/isilon/Research_Dropbox/C-terminal/src/run_COG_group_bias.sh",
+		"/mnt/isilon/Research_Dropbox/RNA-seq_data_analysis/src/pipeline_roesti_analyze_footprints.py",
+		"/mnt/isilon/Research_Dropbox/Mycoplasma_pneumoniae_experimental_data/Annotation/mpn_rRNA.bed",
+		"/mnt/isilon/Research_Dropbox/C-terminal/src/analysis.py",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/mwTools/clustering.py",
+		"/mnt/isilon/Git_repos/xlsxpandasformatter/xlsxpandasformatter.py",
+		"/mnt/isilon/Git_repos/xlsxpandasformatter/xlsxpandasformatter_example.py",
+		"/mnt/isilon/Research_Dropbox/Mycoplasma_pneumoniae_experimental_data/Genome/GCF_000027345.1_ASM2734v1_genomic.gbff",
+		"/mnt/isilon/Research_Dropbox/Mycoplasma_pneumoniae_experimental_data/Annotation/mpnAnnotFeaturesDf6B.readme",
+		"/mnt/isilon/Research_Dropbox/Mycoplasma_pneumoniae_experimental_data/Annotation/NC_000912.1_lab_updated_annotations.gbff",
+		"/mnt/isilon/Research_Dropbox/Mycoplasma_pneumoniae_experimental_data/Annotation/mpnAnnotFeaturesDf6.json",
+		"/mnt/isilon/Research_Dropbox/Mycoplasma_pneumoniae_experimental_data/Annotation/mpn138_corrected.json",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/xlsxformatter/format_classes.py",
+		"/mnt/isilon/Research_Dropbox/Mycoplasma_pneumoniae_experimental_data/Genome/mpn_lab_strain_mutations_VCF_annotation.txt",
+		"/mnt/isilon/Research_Dropbox/Mycoplasma_pneumoniae_experimental_data/Genome/mpn_lab_strain_mutations.vcf",
+		"/mnt/isilon/Research_Dropbox/Python_mwTools/mwTools/plot.py",
+		"/mnt/isilon/Research_Dropbox/RNA-seq_data_analysis/src/index_genome_files_bowtie2.py",
+		"/mnt/isilon/Research_Dropbox/C-terminal/notebooks/analysis_COG.py",
+		"/mnt/isilon/Analysis_data/C-terminal/Eggnog/ctermGatheredDfFocus.html",
+		"/mnt/isilon/Research_Dropbox/C-terminal/src/run_taxon_multispeciesDf_lowmem.sh",
+		"/mnt/isilon/Research_Dropbox/C-terminal/src/run_taxon_multispeciesDf_highmem.sh",
+		"/mnt/isilon/Research_Dropbox/C-terminal/src/multiprocessing_example.py",
+		"/mnt/isilon/Research_Dropbox/C-terminal/src/run_taxon_bias_highmem2.sh",
+		"/mnt/isilon/Research_Dropbox/Translational_regulation_model/src/mpn_annotation_tools.py",
+		"/mnt/isilon/Research_Dropbox/Translation_errors/notebooks/translation_errors_MASCOT_database_appendix.ipynb",
+		"/mnt/isilon/Research_Dropbox/RNA-seq_data_analysis/src/pipeline_roesti_filter_script.sh",
+		"/mnt/isilon/Research_Dropbox/RNA-seq_data_analysis/src/load_dependencies.rc",
+		"/mnt/isilon/Research_Dropbox/RNA-seq_data_analysis/src/pipeline_roesti_3_tutorial.html"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"crayon",
+			"rootsize",
+			"root",
+			"table",
+			"matrix",
+			"vec",
+			"code",
+			"white-space",
+			"([0-9.]+)rem",
+			"wordpress",
+			"sup",
+			"footnote",
+			"sub",
+			">raw",
+			"raw",
+			"raw >",
+			"raw 12",
+			"raw read",
+			"raw",
+			"figure",
+			"max-width",
+			"max-widht",
+			"caption",
+			"table",
+			"stderr",
+			"width",
+			"max-width",
+			"if the construct",
+			"source",
+			"div",
+			".{",
+			"{bash}",
+			".{bash}",
+			".{sh}",
+			"```sh",
+			"author",
+			"+ ",
+			"max-width",
+			"title",
+			"print",
+			"code",
+			"container",
+			"max-width",
+			"width",
+			"widht",
+			"body",
+			"code",
+			"pre",
+			"monospace",
+			"```bash",
+			"bash",
+			"print",
+			"date",
+			"author",
+			"[",
+			"mathjax",
+			"margin",
+			"font-size",
+			"base",
+			"mdconfig",
+			"client",
+			"wp",
+			"WP",
+			"check",
+			"chk",
+			"check_output",
+			"logger",
+			"get_orf_bed_entry",
+			"na",
+			"extract",
+			"extract_orf",
+			"flexbar",
+			"pipe",
+			"$3",
+			"use_ccdsid",
+			"--------creating start_stops_FAR.bed from CDS regions",
+			"multiple",
+			"refCodonTableDf",
+			"order",
+			"codonOrder",
+			"codon",
+			"test",
+			"topJ",
+			"/function_comments=\"CbpA molecular chaperone, DNA-binding",
+			"qualifiers",
+			"/function_comments=\"CbpA molecular chaperone, DNA-binding",
+			"find_arrow_dimensions",
+			"fancyarrow",
+			"seqId",
+			"clustering",
+			"mpn197",
+			"MPN357",
+			"mpn357",
+			"mpn357a",
+			"mpn357",
+			"mpn097",
+			"nan",
+			"table_MPN_locusTag_proteinId",
+			"Seq.write",
+			"row.pos_end",
+			"row.pos_start",
+			"seq_id",
+			"index_genome_files_bowtie2",
+			"refFasta",
+			"convert_objects",
+			"wkhtml",
+			"NobservedSubseq:",
+			"check",
+			"memory",
+			"memory information",
+			"inputMultispeciesAllCDSDf",
+			"print",
+			"stack",
+			"eggNOGPath",
+			"eggNOG",
+			"COGList",
+			"Path",
+			"Protein database",
+			"errorLevel",
+			"freqMut",
+			"axisHeight",
+			"lw",
+			"draw_feature",
+			"padding",
+			"fig_height",
+			"fig.height",
+			"ExactPosition",
+			"mRNA"
+		],
+		"highlight": false,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"2.2*\\1rem",
+			"```bash",
+			"```sh",
+			"sh",
+			"md",
+			"wp",
+			"row[endCol]",
+			"row[startCol]",
+			"id",
+			"analysisEggnogPath",
+			"groupValuesList",
+			"errorLevelSeries",
+			"logger.debug",
+			"index_genome_files_bowtie2",
+			"long_queue",
+			"short_queue",
+			"MY_JOB_ID",
+			"JOB_ID",
+			"plotTitle",
+			"trimmed",
+			"library_type",
+			"filtered",
+			"options.run_test",
+			"run_test",
+			"_length3UTR",
+			"_stopCodonVirtualIndex",
+			"_startCodonVirtualIndex",
+			"parse_cluster_file"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 8,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "pandoc.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10177,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3844,
+								3844
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1440.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "pandoc.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11777,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3534,
+								3534
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1887.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "_config.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2796,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								854,
+								854
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "pandoc_12px.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7888,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3563,
+								3563
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/mnt/isilon/Research_Dropbox/Python_mwTools/SASS/megatype-master/megatype/_container.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 909,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/mnt/isilon/Research_Dropbox/Python_mwTools/SASS/megatype-master/megatype/_config.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4721,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2550,
+								2550
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1071.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/mnt/isilon/Research_Dropbox/Python_mwTools/SASS/megatype-master/megatype.scss",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1145,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/mnt/isilon/Research_Dropbox/Labnotebook/markdown_report_template.self-contained.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 943708,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2516,
+								2516
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/mnt/isilon/Research_Dropbox/Labnotebook/markdown_report_template.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16595,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/MarkdownEditing/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 960.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/mnt/isilon/Research_Dropbox/Python_mwTools/md2wordpress",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12627,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9361,
+								9361
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5457.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "/mnt/isilon/Research_Dropbox/Python_mwTools/pandoc-notebook",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1992,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/ShellScript/Shell-Unix-Generic.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "/mnt/isilon/Research_Dropbox/Thesis/Version10.0 (final)/classicthesis-config.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17128,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1632.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "/mnt/isilon/Research_Dropbox/Python_mwTools/mdCorrectFigureCaption",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 486,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "/mnt/isilon/Research_Dropbox/Python_mwTools/insert_mathjax_script_in_html_header",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1076,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								898,
+								898
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "templates/default.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1725,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 19,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "templates/default.html5",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1652,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 20,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "/mnt/isilon/Research_Dropbox/Python_mwTools/SASS/megatype-master/megatype/test/_defaults.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7645,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6396,
+								6396
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "wordpress.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7690,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								426,
+								426
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"file": "wordpress.scaled.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10167,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10167,
+								10167
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "scale_rem_values.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 731,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								522,
+								522
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": ".",
+									"selector": "source.python - string - comment - constant.numeric"
+								},
+								{
+									"characters": ".",
+									"selector": "source.python - string - constant.numeric"
+								}
+							],
+							"auto_name": "!#/bin/env python3",
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": "wordpress_12px.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6390,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5667,
+								5667
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3172.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "pandoc_scss.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 268.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

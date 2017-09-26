@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+import argparse
+import re
+from pathlib import Path
+
+if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('filename', type=str)
+    args = parser.parse_args()
+    filePath = Path(args.filename)
+
+    with filePath.open('r') as f:
+        content = f.read()
+
+    content = re.sub(r'(?<!```\n)!\[.*\]\((.*)\)\{(.*)\}\[\[(.*)\]\]', r'![\3](\1){\2}', content, re.DOTALL)
+
+    with filePath.open('w') as f:
+        f.write(content)

@@ -1,0 +1,47 @@
+#!/bin/bash
+
+INPUT_FILE=$1
+
+if [[ ${INPUT_FILE} =~ \.md$ ]]; then
+    echo "input file type is Markdown."
+    BASENAME=${INPUT_FILE%.md}
+elif [[ ${INPUT_FILE} =~ \.ipynb$ ]]; then
+    echo "input file type is jupyter notebook."
+    BASENAME=${INPUT_FILE%.ipynb}
+    jupyter nbconvert "${INPUT_FILE}" --to markdown
+fi
+
+# Correcting caption such that we can use the following format in jupyter notebook:
+# the purpose of which is to be able to display the legend below the figure in the
+# rendered jupyter notebook.
+#     ![](Images/image.png){#fig:Marks2016_initiation width=60%}[... legend]
+# which will be transformed into the correct pandoc markdown syntax:
+#     ![... legend](Images/image.png){#fig:Marks2016_initiation width=60%}
+mdCorrectFigureCaption "${BASENAME}.md"
+
+# Note: that any use of --filter pandoc-citeproc or --bibliography=FILE should come after the pandoc-fignos filter call.
+# Note: The bibliography file is set in the YAML metadata. We could also use the pandoc command-line option `--bibliography="${BIBLIOGRAPHY}"`
+
+pandoc "${BASENAME}.md" -o "${BASENAME}.pdf" \
+    --filter pandoc-fignos \
+    --filter pandoc-citeproc \
+    --latex-engine=xelatex
+
+# Produce no highlight version for direct visualization with images self-contained
+pandoc "${BASENAME}.md" -o "${BASENAME}.self-contained.html" --to=html5 \
+    --filter pandoc-fignos \
+    --filter pandoc-citeproc \
+    --mathjax \
+    --self-contained
+
+# We need to include the MathJax script using the Content Delivery Network (CDN)
+# the script will get loaded from online location when page is rendered and
+# MathJax script will render latex equations on the local browser.
+# Note that using the CDN, online connection is needed in order to load the MathJax script.
+insert_mathjax_script_in_html_header "${BASENAME}.self-contained.html"
+
+# Note: the md2wordpress script needs some YAML configuration for wordpress site access
+# that should be present in the input markdown file.
+
+md2wordpress "${BASENAME}.md"
+

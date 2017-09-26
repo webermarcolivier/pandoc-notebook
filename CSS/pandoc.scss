@@ -1,0 +1,478 @@
+@import "config";
+@import "../../SASS/megatype-master/megatype";
+
+@include megatype;
+
+/*We will use the following trick in order to integrate the CSS into wordpress theme
+without interfering with the theme's own CSS styles in other parts of the layout (menus, widgets, etc).
+Wordpress has currently a root font size of 10px. We want to use the rootsize 22px for the largest
+viewport size. Therefore, we will multiply all rem values in the CSS file by 2.2.
+*/
+
+
+@if $wordpress != true {
+  .container {
+      @include set-container;
+      margin: 0 auto;
+
+      .column {
+        /*max-width: $type-measure; // good typographic measure*/
+        max-width: 32rem;
+        margin: 0 auto;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+  }
+
+
+  body {
+      font-family: font-family-of($sans);
+      color: #444;
+      background: #fefefe;
+      margin: 0 auto;
+  }
+
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, label, legend, caption, figcaption {
+  margin: 0 0px;
+  }
+}
+
+// Paragraph.
+p {
+    /* As the base font size (paragraph `p`) we will use 16px and a lineheight of
+    24px. We define the baseline grid spacing to 24px, with lineheight of 1
+    baseline unit. In order to keep the approximate same proportions for
+    different screen sizes we will change the root size for the different break
+    points. We express the paragraph font size in relative em (rem), relative to
+    the root size: p font size = 16 px = 0.5*1.5 rem * 24 px. Then, the lineheight can
+    be expressed as: 1 root size unit = 1 * 24px = 24px.
+
+    Importantly, we choose to use the megatype script to adjust lineheight, top and
+    bottom margins such that all elements snap to the baseline grid. That means
+    that the lineheight will always be a multiple of the baseline root size.
+
+    For the headers, we choose to set increasing font sizes, and always set the lineheight
+    to 1.5 times the header font size, even if the lineheight will be adjusted to snap
+    to the baseline grid, which will result in a lineheight multiple of 24 px.
+
+    The leader (top margin) and trailer (bottom margin) are also expressed in
+    root baseline units.
+    */
+
+    font-family: font-family-of($sans); 
+
+    // We can set our type using pixels, rems or baseline units
+    @include typeset($font: $sans, $fontsize: 0.75rem, $lineheight: 1, $leader: 0, $trailer: 1);
+
+    /*
+    // we can apply a single breakpoint, starting with breakpoint key: 1
+    @include min-width(1) {
+        @include typeset($font: $sans, $fontsize: 16px, $lineheight: 1.5, $leader: 1, $trailer: 2);
+    }
+
+    // or set several keys at once
+    @include min-width(2 3 4) {
+        @include typeset($sans, 18px, 2, $leader: 1, $trailer: 3);
+    }
+    */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #111;
+  font-weight: normal;
+}
+
+h4, h5, h6 {
+  font-weight: 500;
+}
+
+@if $wordpress != true {
+  h1 {
+      font-family: font-family-of($title);
+      @include typeset($font: $title, $fontsize: 2.75rem, $lineheight: 5, $leader: 3, $trailer: 3);
+      font-weight: 200;
+  }
+} @else {
+  /*Here we apply the h1 style *only* to post content headers.
+  Otherwise we would change the style, include the offset vertical position
+  of blog post titles, etc.
+  */
+  h1:not(.entry-title) {
+      font-family: font-family-of($title);
+      @include typeset($font: $title, $fontsize: 2.75rem, $lineheight: 5, $leader: 3, $trailer: 3);
+      font-weight: 200;
+  }
+}
+
+h2 {
+    font-family: font-family-of($title);
+    @include typeset($font: $title, $fontsize: 2.2rem, $lineheight: 3, $leader: 3, $trailer: 2);
+    font-weight: 200;
+}
+
+h3 {
+    font-family: font-family-of($sans); 
+    @include typeset($font: $sans, $fontsize: 1.5rem, $lineheight: 2, $leader: 2, $trailer: 2);
+}
+
+h4 {
+    font-family: font-family-of($sans); 
+    @include typeset($font: $sans, $fontsize: 1.1rem, $lineheight: 2, $leader: 1, $trailer: 1);
+}
+
+h5 {
+    font-family: font-family-of($sans); 
+    @include typeset($font: $sans, $fontsize: 0.8rem, $lineheight: 1, $leader: 1, $trailer: 0);
+    font-weight: 600;
+}
+
+h6 {
+    font-family: font-family-of($sans); 
+    @include typeset($font: $sans, $fontsize: 0.75rem, $lineheight: 1, $leader: 1, $trailer: 1);
+    font-weight: 500;
+}
+
+@if $wordpress != true {
+  .title {
+      font-family: font-family-of($title);
+      @include typeset($font: $title, $fontsize: 3rem, $lineheight: 4, $leader: 2, $trailer: 4);
+      font-weight: 200;
+  }
+
+  .author {
+    font-weight: 300;
+    text-align: center;
+  }
+
+  .date {
+    font-family: font-family-of($sans);
+    @include typeset($font: $sans, $fontsize: 0.9rem, $lineheight: 1, $leader: 1, $trailer: 3);
+    font-weight: 300;
+    text-align: center;
+  }
+}
+
+hr {
+  display: block;
+  height: 2px;
+  border: 0;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #eee;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+// Lists
+ul {
+  list-style: disc outside;
+  padding-left: 1rem;
+
+  li {
+    padding-left: 0.2rem;
+  }
+}
+
+ol {
+  padding-left: 0.7rem;
+}
+
+ol, ul {
+  padding-bottom: 1rem;
+}
+
+li {
+  text-align: left;
+  @include typeset($font: $sans, $fontsize: 0.75rem, $lineheight: 1, $leader: 0, $trailer: 0);
+}
+
+@if $wordpress {
+  .widget li {
+    top: 0;
+  }
+}
+
+a {
+  @include text-link;
+}
+
+sub, sup {
+  font-size: smaller;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+
+@if $wordpress != true {
+  /*This is the default style applied in the HTML header by Pandoc.
+  Pandoc translates Markdown code block with no language to <pre><code>, and we want
+  to display them as normal pre block.
+  */
+  code {
+      white-space: inherit;
+  }
+
+  /*Change the style of the scrollbar in order not to break vertical rhythm.
+  We use an overlaid scroll bar just at the bottom of the <div> containing the <pre><code> block.
+  The scrollbar with overlay style will not change the height of the element.
+  */
+  div.sourceCode {
+    overflow-x: overlay;
+    overflow-y: hidden;
+  }
+
+  pre.sourceCode {
+    overflow-x: inherit;
+    white-space: pre;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 2px; }
+
+  ::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px; }
+
+  ::-webkit-scrollbar-thumb {
+    background: #e1e1e1;
+    border: 0px none #ffffff;
+    border-radius: 50px; }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #f5f5f5; }
+
+  ::-webkit-scrollbar-thumb:active {
+    background: #c7c7c7; }
+
+  ::-webkit-scrollbar-track {
+    background: #666666;
+    border: 0px none #ffffff;
+    border-radius: 50px; }
+
+  ::-webkit-scrollbar-track:hover {
+    background: #666666; }
+
+  ::-webkit-scrollbar-track:active {
+    background: #333333; }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent; }
+
+  p code, li code {
+    background-color: rgb(243, 243, 243);
+    border-width: 0px;
+  }
+}
+
+
+pre {
+  border-radius: 0.15rem;
+  border-width: 0px;
+  border-color: rgb(238, 238, 238);
+  border-style: solid;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: font-family-of($monospace);
+  @include typeset($font: $monospace, $fontsize: 0.7rem, $lineheight: 1, $leader: 0.1, $trailer: 1.1);
+}
+
+code {
+  font-family: font-family-of($monospace);
+  font-size: 0.7rem;
+}
+
+@if $wordpress {
+  /*Code blocks all have the crayon-table class*/
+  .crayon-table {
+    font-size: 0.7rem;
+    line-height: 1rem;
+  }
+
+  /*In a code block, use the same line-height as the paragraph, in order not to
+  break the baseline grid.*/
+  pre code {
+    @include typeset($font: $monospace, $fontsize: 0.7rem, $lineheight: 1, $leader: 0, $trailer: 0);
+  }
+}
+
+/*When code is inline, use a smaller line-height in order not to introduce
+a shift to the next line. Because inline code has a different font, its box
+can be taller than the paragraph text line-height.
+*/
+p code, li code {
+  line-height:0.85rem;
+}
+
+figure, div.figure {
+  display: block;
+  max-width: 100%;
+  position: relative;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+img {
+  vertical-align: middle;
+}
+
+figure img {
+  border: none;
+}
+
+.caption, figcaption, caption {
+  @include typeset($font: $sans, $fontsize: 0.75rem, $lineheight: 1, $leader: 1, $trailer: 1);
+  font-style: italic;
+}
+
+
+@if $wordpress != true {
+  blockquote p {
+    /*Simple gray rectangle on the left*/
+    padding-left: 1.5rem;
+    border-left: 0.5rem #EEE solid;
+    position: relative;
+    overflow: visible;
+  }
+
+  cite {
+    font-family: font-family-of($serif);
+    display: block;
+    font-style: italic;
+  }
+
+  table {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+
+  table th {
+    background-color: #eee;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+  }
+
+  table td {
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    vertical-align: top;
+  }
+
+  th, td {
+    height: 1rem;
+    padding: 0 0.5rem 0 0.5rem;
+    font-family: font-family-of($sans);
+    @include typeset($font: $sans, $fontsize: 0.75rem, $lineheight: 1, $leader: 0, $trailer: 0);
+    position: initial;
+  }
+
+  th {
+    font-weight: bold;
+    font-family: font-family-of($sans);
+    border-bottom: 2px solid palette(black);
+  }
+
+  /*==================================*/
+  /* NOT FONT SIZE RELATED */
+
+
+
+  img {
+    max-width: 100%;
+  }
+
+  /*a {
+    color: #0645ad;
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: #0b0080;
+  }
+
+  a:hover {
+    color: #06e;
+  }
+
+  a:active {
+    color: #faa700;
+  }
+
+  a:focus {
+    outline: thin dotted;
+  }
+
+  *::-moz-selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #000;
+  }
+
+  *::selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #000;
+  }
+
+  a::-moz-selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #0645ad;
+  }
+
+  a::selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #0645ad;
+  }
+  */
+  blockquote {
+    color: #666666;
+  }
+
+  pre, code, kbd, samp {
+    color: #000;
+  }
+
+  b, strong {
+    font-weight: bold;
+  }
+
+  dfn {
+    font-style: italic;
+  }
+
+  ins {
+    background: #ff9;
+    color: #000;
+    text-decoration: none;
+  }
+
+  mark {
+    background: #ff0;
+    color: #000;
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  dt {
+    font-weight: bold;
+  }
+
+  img {
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+    vertical-align: middle;
+  }
+
+}

@@ -1,0 +1,389 @@
+@import "config";
+@import "../SASS/megatype-master/megatype";
+
+@include megatype;
+
+.container {
+    @include set-container;
+    margin: 0 auto;
+
+    .column {
+      /*max-width: $type-measure; // good typographic measure*/
+      max-width: 1.5*40rem;
+      margin: 0 auto;
+    }
+}
+
+body {
+    font-family: font-family-of($sans);
+    color: #444;
+    background: #fefefe;
+}
+
+// Paragraph.
+p {
+    /* As the base font size (paragraph `p`) we will use 16px and a lineheight of
+    24px. We define the baseline grid spacing to 12px, with lineheight of 2
+    baseline units. In order to keep the approximate same proportions for
+    different screen sizes we will change the root size for the different break
+    points. We express the paragraph font size in relative em (rem), relative to
+    the root size: p font size = 16 px = 1.5 rem * 12 px. Then, the lineheight can
+    be expressed as: 2 root size units = 2 * 12px = 24px.
+
+    Importantly, we choose to use the megatype script to adjust lineheight, top and
+    bottom margins such that all elements snap to the baseline grid. That means
+    that the lineheight will always be a multiple of the baseline root size.
+
+    For the headers, we choose to set increasing font sizes, and always set the lineheight
+    to 1.5 times the header font size, even if the lineheight will be adjusted to snap
+    to the baseline grid.
+
+    The leader (top margin) and trailer (bottom margin) are also expressed in
+    root baseline units.
+    */
+
+    font-family: font-family-of($sans); 
+
+    // We can set our type using pixels, rems or baseline units
+    @include typeset($font: $sans, $fontsize: 1.5rem, $lineheight: 2, $leader: 0, $trailer: 2);
+
+    /*
+    // we can apply a single breakpoint, starting with breakpoint key: 1
+    @include min-width(1) {
+        @include typeset($font: $sans, $fontsize: 16px, $lineheight: 1.5, $leader: 1, $trailer: 2);
+    }
+
+    // or set several keys at once
+    @include min-width(2 3 4) {
+        @include typeset($sans, 18px, 2, $leader: 1, $trailer: 3);
+    }
+    */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #111;
+  font-weight: normal;
+}
+
+h4, h5, h6 {
+  font-weight: bold;
+}
+
+h1 {
+    font-family: font-family-of($sans);
+    @include typeset($font: $sans, $fontsize: 4.5rem, $lineheight: 6, $leader: 6, $trailer: 8);
+}
+
+h2 {
+    font-family: font-family-of($sans); 
+    @include typeset($font: $sans, $fontsize: 3.75rem, $lineheight: 5, $leader: 6, $trailer: 6);
+}
+
+h3 {
+    font-family: font-family-of($sans); 
+    @include typeset($font: $sans, $fontsize: 3.0rem, $lineheight: 4, $leader: 4, $trailer: 4);
+}
+
+h4 {
+    font-family: font-family-of($sans); 
+    @include typeset($font: $sans, $fontsize: 2.25rem, $lineheight: 3, $leader: 3, $trailer: 2);
+}
+
+h5 {
+    font-family: font-family-of($sans); 
+    @include typeset($font: $sans, $fontsize: 1.8rem, $lineheight: 2.4, $leader: 2, $trailer: 2);
+}
+
+h6 {
+    font-family: font-family-of($sans); 
+    @include typeset($font: $sans, $fontsize: 1.5rem, $lineheight: 2, $leader: 2, $trailer: 2);
+}
+
+.title {
+    font-family: font-family-of($title);
+    @include typeset($font: $title, $fontsize: 6rem, $lineheight: 8.5, $leader: 4, $trailer: 8);
+    font-weight: 200;
+}
+
+.author {
+  font-weight: 300;
+  text-align: center;
+}
+
+.date {
+  font-family: font-family-of($sans);
+  @include typeset($font: $sans, $fontsize: 1.8rem, $lineheight: 2.4, $leader: 2, $trailer: 6);
+  font-weight: 300;
+  text-align: center;
+}
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+hr {
+  display: block;
+  height: 2px;
+  border: 0;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #eee;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+// Lists
+ul {
+  list-style: disc outside;
+  padding-left: 1.375rem;
+
+  li {
+    padding-left: 0.35rem;
+  }
+}
+
+ol {
+  padding-left: 1.75rem;
+}
+
+ol, ul {
+  padding-bottom: 2rem;
+}
+
+li {
+  text-align: left;
+  @include typeset($font: $sans, $fontsize: 1.5rem, $lineheight: 2, $leader: 0, $trailer: 1.2);
+}
+
+a {
+  @include text-link;
+}
+
+/*This is the default style applied in the HTML header by Pandoc.*/
+div.sourceCode { overflow-x: auto; }
+
+/*This is the default style applied in the HTML header by Pandoc.
+We override the `white-space` attribute. Pandoc translates Markdown code block
+with no language to <pre><code>, and we want to display them as normal pre block.
+*/
+code {
+    white-space: inherit;
+}
+
+pre {
+  border-radius: 0.3rem;
+  border-width: 0px;
+  border-color: rgb(238, 238, 238);
+  border-style: solid;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: font-family-of($monospace);
+  @include typeset($font: $monospace, $fontsize: 1.4rem, $lineheight: 2, $leader: 0.2, $trailer: 2.5);
+}
+
+pre.sourceCode {
+  white-space: pre;
+  overflow-x: auto;
+}
+
+code {
+  font-family: font-family-of($monospace);
+  font-size: 1.4rem;
+
+  /*When code is inline, use a smaller line-height in order not to introduce
+  a shift to the next line. Because inline code has a different font, its box
+  can be taller than the paragraph text line-height.
+  */
+  p & {
+    line-height:1.65rem;
+    background-color: rgb(243, 243, 243);
+    border-width: 0px;
+  }
+}
+
+/*In a code block, use the same line-height as the paragraph, in order not to
+break the baseline grid.*/
+/*pre code {
+  display: inline-block;
+  @include min-width(0) {
+    @include typeset($font: $monospace, $fontsize: 1.4rem, $lineheight: 2, $leader: 0.8, $trailer: 1.1);
+  }
+}*/
+
+
+figure {
+  display: block;
+  max-width: 100%;
+  position: relative;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+img {
+  vertical-align: middle;
+}
+
+figure img {
+  border: none;
+}
+
+.caption, figcaption, caption {
+  @include typeset($font: $sans, $fontsize: 1.4rem, $lineheight: 2, $leader: 1, $trailer: 1);
+  font-style: italic;
+}
+
+blockquote {
+  /*Simple gray rectangle on the left*/
+  padding-left: 3em;
+  border-left: 0.5em #EEE solid;
+
+  p {
+    position: relative;
+    overflow: visible;
+  }
+}
+
+cite {
+  font-family: font-family-of($serif);
+  display: block;
+  @include typeset($font: $serif, $fontsize: 1.5rem, $lineheight: 2, $leader: 2, $trailer: 2);
+  font-style: italic;
+}
+
+
+
+
+/*==================================*/
+/* NOT FONT SIZE RELATED */
+
+
+
+img {
+  max-width: 100%;
+}
+
+/*a {
+  color: #0645ad;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #0b0080;
+}
+
+a:hover {
+  color: #06e;
+}
+
+a:active {
+  color: #faa700;
+}
+
+a:focus {
+  outline: thin dotted;
+}
+
+*::-moz-selection {
+  background: rgba(255, 255, 0, 0.3);
+  color: #000;
+}
+
+*::selection {
+  background: rgba(255, 255, 0, 0.3);
+  color: #000;
+}
+
+a::-moz-selection {
+  background: rgba(255, 255, 0, 0.3);
+  color: #0645ad;
+}
+
+a::selection {
+  background: rgba(255, 255, 0, 0.3);
+  color: #0645ad;
+}
+*/
+blockquote {
+  color: #666666;
+}
+
+pre, code, kbd, samp {
+  color: #000;
+}
+
+b, strong {
+  font-weight: bold;
+}
+
+dfn {
+  font-style: italic;
+}
+
+ins {
+  background: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+dt {
+  font-weight: bold;
+}
+
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+  vertical-align: middle;
+}
+
+table {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+table th {
+  background-color: #eee;
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+}
+
+table td {
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  vertical-align: top;
+}
+
+th, td {
+  height: 3rem;
+  padding: 0 0.5rem 0 0.5rem;
+  font-family: font-family-of($sans);
+  @include typeset($font: $sans, $fontsize: 1.5rem, $lineheight: 1.8, $leader: 0, $trailer: 0);
+}
+
+th {
+  font-weight: bold;
+  font-family: font-family-of($sans);
+  border-bottom: 2px solid palette(black);
+}

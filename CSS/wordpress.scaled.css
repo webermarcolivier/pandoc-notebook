@@ -1,0 +1,277 @@
+/*For Wordpress we use the same CSS but with some parts removed or changed.*/
+/* CSS compiled from SCSS */
+/* --------------------------------------- */
+ div.entry-content h1, div.entry-content  h2, div.entry-content  h3, div.entry-content  h4, div.entry-content  h5, div.entry-content  h6, div.entry-content  p, div.entry-content  blockquote, div.entry-content  pre, div.entry-content  a, div.entry-content  abbr, div.entry-content  acronym, div.entry-content  address, div.entry-content  big, div.entry-content  cite, div.entry-content  code, div.entry-content  del, div.entry-content  dfn, div.entry-content  em, div.entry-content  ins, div.entry-content  kbd, div.entry-content  q, div.entry-content  s, div.entry-content  samp, div.entry-content  small, div.entry-content  strike, div.entry-content  strong, div.entry-content  sub, div.entry-content  sup, div.entry-content  tt, div.entry-content  var, div.entry-content  b, div.entry-content  u, div.entry-content  i, div.entry-content  center, div.entry-content  dl, div.entry-content  dt, div.entry-content  dd, div.entry-content  ol, div.entry-content  ul, div.entry-content  li, div.entry-content  label, div.entry-content  legend, div.entry-content  caption, div.entry-content  figcaption {
+  margin: 0;
+  padding: 0; }
+
+html {
+  font-size: 10px; }
+  @media (max-width: 79.9375em) {
+    html {
+      font-size: 10px; } }
+  @media (max-width: 61.1875em) {
+    html {
+      font-size: 9px; } }
+  @media (max-width: 47.9375em) {
+    html {
+      font-size: 8px; } }
+  @media (max-width: 29.9375em) {
+    html {
+      font-size: 8px; } }
+
+/*We will use the following trick in order to integrate the CSS into wordpress theme
+without interfering with the theme's own CSS styles in other parts of the layout (menus, widgets, etc).
+Wordpress has currently a root font size of 10px. We want to use the rootsize 22px for the largest
+viewport size. Therefore, we will multiply all rem values in the CSS file by 2.2.
+*/
+ div.entry-content p {
+    /* As the base font size (paragraph `p`) we will use 16px and a lineheight of
+    24px. We define the baseline grid spacing to 24px, with lineheight of 1
+    baseline unit. In order to keep the approximate same proportions for
+    different screen sizes we will change the root size for the different break
+    points. We express the paragraph font size in relative em (rem), relative to
+    the root size: p font size = 16 px = 0.5*1.5 rem * 24 px. Then, the lineheight can
+    be expressed as: 1 root size unit = 1 * 24px = 24px.
+
+    Importantly, we choose to use the megatype script to adjust lineheight, top and
+    bottom margins such that all elements snap to the baseline grid. That means
+    that the lineheight will always be a multiple of the baseline root size.
+
+    For the headers, we choose to set increasing font sizes, and always set the lineheight
+    to 1.5 times the header font size, even if the lineheight will be adjusted to snap
+    to the baseline grid, which will result in a lineheight multiple of 24 px.
+
+    The leader (top margin) and trailer (bottom margin) are also expressed in
+    root baseline units.
+    */
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 1.650000rem;
+  line-height: 1.33333;
+  position: relative;
+  top: 0.552750rem;
+  margin-bottom: 2.200000rem;
+    /*
+    // we can apply a single breakpoint, starting with breakpoint key: 1
+    @ div.entry-content include min-width(1) {
+        @include typeset($font: $sans, $fontsize: 16px, $lineheight: 1.5, $leader: 1, $trailer: 2);
+    }
+
+    // or set several keys at once
+    @ div.entry-content include min-width(2 3 4) {
+        @include typeset($sans, 18px, 2, $leader: 1, $trailer: 3);
+    }
+    */ }
+  @ div.entry-content media screen and (-webkit-min-device-pixel-ratio: 0) {
+ div.entry-content     p {
+      line-height: 2.200000rem; } }
+
+ div.entry-content h1, div.entry-content  h2, div.entry-content  h3, div.entry-content  h4, div.entry-content  h5, div.entry-content  h6 {
+  color: #111;
+  font-weight: normal; }
+
+ div.entry-content h4, div.entry-content  h5, div.entry-content  h6 {
+  font-weight: bold; }
+
+/*Here we apply the h1 style *only* to post content headers.
+Otherwise we would change the style, include the offset vertical position
+of blog post titles, etc.
+*/
+ div.entry-content h1:not(.entry-title) {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 4.950000rem;
+  line-height: 1.33333;
+  position: relative;
+  top: 5.783250rem;
+  margin-bottom: 13.200000rem; }
+  @ div.entry-content media screen and (-webkit-min-device-pixel-ratio: 0) {
+ div.entry-content     h1:not(.entry-title) {
+      line-height: 6.600000rem; } }
+
+ div.entry-content h2 {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 3.740000rem;
+  line-height: 1.76471;
+  position: relative;
+  top: 4.085400rem;
+  margin-bottom: 8.800000rem; }
+  @ div.entry-content media screen and (-webkit-min-device-pixel-ratio: 0) {
+ div.entry-content     h2 {
+      line-height: 6.600000rem; } }
+
+ div.entry-content h3 {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 3.300000rem;
+  line-height: 1.33333;
+  position: relative;
+  top: 3.168000rem;
+  margin-bottom: 6.600000rem; }
+  @ div.entry-content media screen and (-webkit-min-device-pixel-ratio: 0) {
+ div.entry-content     h3 {
+      line-height: 4.400000rem; } }
+
+ div.entry-content h4 {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 2.420000rem;
+  line-height: 0.90909;
+  position: relative;
+  top: 2.433200rem;
+  margin-bottom: 4.400000rem; }
+  @ div.entry-content media screen and (-webkit-min-device-pixel-ratio: 0) {
+ div.entry-content     h4 {
+      line-height: 2.200000rem; } }
+
+ div.entry-content h5 {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 1.980000rem;
+  line-height: 1.11111;
+  position: relative;
+  top: 2.615800rem;
+  margin-bottom: 2.200000rem; }
+  @ div.entry-content media screen and (-webkit-min-device-pixel-ratio: 0) {
+ div.entry-content     h5 {
+      line-height: 2.200000rem; } }
+
+ div.entry-content h6 {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 1.650000rem;
+  line-height: 1.33333;
+  position: relative;
+  top: 2.752750rem;
+  margin-bottom: 4.400000rem; }
+  @ div.entry-content media screen and (-webkit-min-device-pixel-ratio: 0) {
+ div.entry-content     h6 {
+      line-height: 2.200000rem; } }
+
+ div.entry-content hr {
+  display: block;
+  height: 2px;
+  border: 0;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #eee;
+  padding-top: 2.200000rem;
+  padding-bottom: 2.200000rem; }
+
+ div.entry-content ul {
+  list-style: disc outside;
+  padding-left: 2.200000rem; }
+ div.entry-content   ul li {
+    padding-left: 0.440000rem; }
+
+ div.entry-content ol {
+  padding-left: 1.540000rem; }
+
+ div.entry-content ol, div.entry-content  ul {
+  padding-bottom: 2.200000rem; }
+
+ div.entry-content li {
+  text-align: left;
+  font-size: 1.650000rem;
+  line-height: 1.33333;
+  position: relative;
+  top: 0.552750rem;
+  margin-bottom: 0; }
+  @ div.entry-content media screen and (-webkit-min-device-pixel-ratio: 0) {
+ div.entry-content     li {
+      line-height: 2.200000rem; } }
+
+ div.entry-content .widget li {
+  top: 0; }
+
+ div.entry-content a {
+  color: #169dbf;
+  text-decoration: none;
+  background-image: linear-gradient(to bottom, transparent 50%, rgba(22, 157, 191, 0.6) 50%);
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  background-position: 0 1.05em;
+  background-position: 0 calc(43% + 0.44em + 2px);
+  cursor: pointer; }
+ div.entry-content   a:hover {
+    background-image: linear-gradient(to bottom, transparent 50%, rgba(22, 157, 191, 0.8) 50%);
+    color: #169dbf; }
+ div.entry-content   .no-cssgradients a {
+    text-decoration: underline; }
+
+ div.entry-content sub, div.entry-content  sup {
+  font-size: smaller;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+ div.entry-content sup {
+  top: -0.5em; }
+
+ div.entry-content sub {
+  bottom: -0.25em; }
+
+ div.entry-content pre {
+  border-radius: 0.330000rem;
+  border-width: 0px;
+  border-color: #eeeeee;
+  border-style: solid;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: Inconsolata, monospace, Courier, Menlo;
+  font-size: 1.540000rem;
+  line-height: 1.42857;
+  position: relative;
+  top: 0.606100rem;
+  margin-bottom: 2.200000rem; }
+  @ div.entry-content media screen and (-webkit-min-device-pixel-ratio: 0) {
+ div.entry-content     pre {
+      line-height: 2.200000rem; } }
+
+ div.entry-content code {
+  font-family: Inconsolata, monospace, Courier, Menlo;
+  font-size: 1.540000rem; }
+
+/*Code blocks all have the crayon-table class*/
+ div.entry-content .crayon-table {
+  font-size: 1.540000rem;
+  line-height: 2.200000rem; }
+
+/*In a code block, use the same line-height as the paragraph, in order not to
+break the baseline grid.*/
+ div.entry-content pre code {
+  font-size: 1.540000rem;
+  line-height: 1.42857;
+  position: relative;
+  top: -1.593900rem;
+  margin-bottom: -2.200000rem; }
+  @ div.entry-content media screen and (-webkit-min-device-pixel-ratio: 0) {
+ div.entry-content     pre code {
+      line-height: 2.200000rem; } }
+
+/*When code is inline, use a smaller line-height in order not to introduce
+a shift to the next line. Because inline code has a different font, its box
+can be taller than the paragraph text line-height.
+*/
+ div.entry-content p code, div.entry-content  li code {
+  line-height: 1.870000rem; }
+
+ div.entry-content figure, div.entry-content  div.figure {
+  display: block;
+  max-width: 100%;
+  position: relative;
+  margin-top: 4.400000rem;
+  margin-bottom: 6.600000rem; }
+
+ div.entry-content img {
+  vertical-align: middle; }
+
+ div.entry-content figure img {
+  border: none; }
+
+ div.entry-content .caption, div.entry-content  figcaption, div.entry-content  caption {
+  font-size: 1.650000rem;
+  line-height: 1.33333;
+  position: relative;
+  top: 2.752750rem;
+  margin-bottom: 4.400000rem;
+  font-style: italic; }
+  @ div.entry-content media screen and (-webkit-min-device-pixel-ratio: 0) {
+ div.entry-content     .caption, div.entry-content  figcaption, div.entry-content  caption {
+      line-height: 2.200000rem; } }
+
+/*# sourceMappingURL=wordpress.css.map */

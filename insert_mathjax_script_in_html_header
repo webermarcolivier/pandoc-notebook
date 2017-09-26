@@ -1,0 +1,51 @@
+#!/usr/bin/env python3
+import argparse
+import re
+from pathlib import Path
+from bs4 import BeautifulSoup
+
+
+if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument('htmlFile', type=str)
+    args = parser.parse_args()
+    args.htmlFile
+
+    with open(args.htmlFile, 'r') as f:
+        soup = BeautifulSoup(f, 'html5lib')
+
+    # Note: if there are no math expression in the markdown file,
+    # the mathjax script declaration is not included in the html header by pandoc
+    mathjax = soup.head.find('script')
+    if mathjax is not None:
+        mathjax['src'] = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML"
+        mathjax['async'] = None
+
+        # Insert the MathJax inline configuration *before* loading the script
+        tag = soup.new_tag("script")
+        tag['type'] = 'text/x-mathjax-config'
+        tag.string = "MathJax.Hub.Config({ CommonHTML: { scale: 80 } });"
+        mathjax.insert_before(tag)
+
+    div_tag = soup.new_tag('div', **{'class':'container'})
+    col_tag = soup.new_tag('div', **{'class':'column'})
+
+    soup.body.wrap(div_tag)
+    soup.body.wrap(col_tag)
+
+    # for content in reversed(soup.body.contents):
+    #     div_tag.insert(0, content.extract())
+
+    # soup.body.append(div_tag)
+
+    # google_tag = soup.new_tag('link', rel='stylesheet', href='https://fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext:300,400,500,600,italic')
+    # soup.head.insert(0, google_tag)
+    # google_tag = soup.new_tag('link', rel='stylesheet', href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400&subset=latin,latin-ext')
+    # soup.head.insert(0, google_tag)
+
+    with open(args.htmlFile, 'w') as f:
+        f.write(str(soup))
+
+    print("HTML file processed.")

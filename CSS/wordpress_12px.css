@@ -1,0 +1,247 @@
+/* CSS compiled from SCSS */
+/* --------------------------------------- */
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, label, legend, caption, figcaption {
+  margin: 0;
+  padding: 0; }
+
+html {
+  font-size: 11px; }
+  @media (max-width: 79.9375em) {
+    html {
+      font-size: 11px; } }
+  @media (max-width: 61.1875em) {
+    html {
+      font-size: 9px; } }
+  @media (max-width: 47.9375em) {
+    html {
+      font-size: 8px; } }
+  @media (max-width: 29.9375em) {
+    html {
+      font-size: 6px; } }
+
+p {
+    /* As the base font size (paragraph `p`) we will use 16px and a lineheight of
+    24px. We define the baseline grid spacing to 12px, with lineheight of 2
+    baseline units. In order to keep the approximate same proportions for
+    different screen sizes we will change the root size for the different break
+    points. We express the paragraph font size in relative em (rem), relative to
+    the root size: p font size = 16 px = 1.5 rem * 12 px. Then, the lineheight can
+    be expressed as: 2 root size units = 2 * 12px = 24px.
+
+    Importantly, we choose to use the megatype script to adjust lineheight, top and
+    bottom margins such that all elements snap to the baseline grid. That means
+    that the lineheight will always be a multiple of the baseline root size.
+
+    For the headers, we choose to set increasing font sizes, and always set the lineheight
+    to 1.5 times the header font size, even if the lineheight will be adjusted to snap
+    to the baseline grid.
+
+    The leader (top margin) and trailer (bottom margin) are also expressed in
+    root baseline units.
+    */
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.33333;
+  position: relative;
+  top: -0.52875rem;
+  margin-bottom: 1rem;
+    /*
+    // we can apply a single breakpoint, starting with breakpoint key: 1
+    @include min-width(1) {
+        @include typeset($font: $sans, $fontsize: 16px, $lineheight: 1.5, $leader: 1, $trailer: 2);
+    }
+
+    // or set several keys at once
+    @include min-width(2 3 4) {
+        @include typeset($sans, 18px, 2, $leader: 1, $trailer: 3);
+    }
+    */ }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    p {
+      line-height: 2rem; } }
+
+h1, h2, h3, h4, h5, h6 {
+  color: #111;
+  font-weight: normal; }
+
+h4, h5, h6 {
+  font-weight: bold; }
+
+
+/*Here we apply the h1 style *only* to post content headers.
+Otherwise we would change the style, include the offset vertical position
+of blog post titles, etc.
+*/
+h1:not(.entry-title) {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 4.5rem;
+  line-height: 1.33333;
+  position: relative;
+  top: 5.22625rem;
+  margin-bottom: 12rem; }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    h1 {
+      line-height: 6rem; } }
+
+h2 {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 3.75rem;
+  line-height: 1.33333;
+  position: relative;
+  top: 3.0375rem;
+  margin-bottom: 8rem; }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    h2 {
+      line-height: 5rem; } }
+
+h3 {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 3rem;
+  line-height: 1.33333;
+  position: relative;
+  top: 0.84875rem;
+  margin-bottom: 4rem; }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    h3 {
+      line-height: 4rem; } }
+
+h4 {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 2.25rem;
+  line-height: 1.33333;
+  position: relative;
+  top: 1.66rem;
+  margin-bottom: 4rem; }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    h4 {
+      line-height: 3rem; } }
+
+h5 {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 1.8rem;
+  line-height: 1.11111;
+  position: relative;
+  top: 1.34675rem;
+  margin-bottom: 3rem; }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    h5 {
+      line-height: 2rem; } }
+
+h6 {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.33333;
+  position: relative;
+  top: 1.47125rem;
+  margin-bottom: 3rem; }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    h6 {
+      line-height: 2rem; } }
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sup {
+  top: -0.5em; }
+
+sub {
+  bottom: -0.25em; }
+
+hr {
+  display: block;
+  height: 2px;
+  border: 0;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #eee;
+  padding-top: 1rem;
+  padding-bottom: 1rem; }
+
+ul {
+  list-style: disc outside;
+  padding-left: 2rem; }
+  ul li {
+    padding-left: 0.35rem; }
+
+ol {
+  padding-left: 1.75rem; }
+
+ol, ul {
+  padding-bottom: 2rem;
+}
+
+li {
+  text-align: left;
+  font-size: 1.5rem;
+  line-height: 1.33333;
+  position: relative;
+  top: -0.52875rem;
+  margin-bottom: 0; }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    li {
+      line-height: 2rem; } }
+
+
+pre {
+  border-radius: 0.3rem;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: 1.4rem;
+  line-height: 1.42857;
+  position: relative;
+  top: -0.48025rem;
+  margin-bottom: 0; }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    pre {
+      line-height: 2rem; } }
+
+code {
+  font-family: Inconsolata, monospace, Courier, Menlo;
+  font-size: 1.4rem;
+  /*When code is inline, use a smaller line-height in order not to introduce
+  a shift to the next line. Because inline code has a different font, its box
+  can be taller than the paragraph text line-height.
+  */ }
+  p code {
+    line-height: 1.65rem; }
+
+.crayon-syntax-inline {
+  line-height: 1.65rem;
+}
+
+.crayon-table {
+  font-size: 1.4rem;
+}
+
+/*In a code block, use the same line-height as the paragraph, in order not to
+break the baseline grid.*/
+pre code {
+  display: inline-block;
+  font-size: 1.4rem;
+  line-height: 1.42857;
+  position: relative;
+  top: -0.48025rem;
+  margin-bottom: 0; }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    pre code {
+      line-height: 2rem; } }
+
+div.figure {
+  display: block;
+  position: relative;
+  margin-top: 1rem;
+  margin-bottom: 2rem; }
+
+.caption, figcaption {
+  font-size: 1.4rem;
+  line-height: 1.42857;
+  position: relative;
+  top: 0.51275rem;
+  margin-bottom: 1rem;
+  font-style: italic; }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .caption, figcaption {
+      line-height: 2rem; } }

@@ -1,0 +1,97 @@
+/*For Wordpress we use the same CSS but with some parts removed or changed.*/
+$wordpress: false;
+
+// enable responsive baseline & type scaling.
+// increases root font size from each breakpoint, starting from the size specified in the rootsizes below
+$baseline-scaling: false;
+
+// enable formal baseline grid
+// snaps all type to the baseline grid
+$baseline-snap: true;
+
+// default breakpoint. This is where the default html font size will be set,
+// media queries will be generated to either side to apply rootsizes at remaining breakpoints
+// eg: for mobile first set this to 0, for desktop first set this to your largest breakpoint (with this config, 4)
+$default-break: 4;
+
+
+// map for flexible retrieval of breakpoint info
+// SASS cannot use the wordpress variable in this file, so we have to declare manually and we cannot
+// use the if else control.
+@if $wordpress == true {
+    $rootsizeSeries: 7px, 8px, 9px, 10px, 10px;
+} @else {
+    $rootsizeSeries: 16px, 18px, 20px, 22px, 22px;
+}
+$rootsizeSeries: 16px, 18px, 20px, 22px, 22px;
+
+$breakpoint-map: (
+    0: (
+        start:      0px,
+        max:        420px,
+        rootsize:   nth($rootsizeSeries, 1)
+    ),
+    1: (
+        start:      480px,
+        max:        560px,
+        rootsize:   nth($rootsizeSeries, 2)
+    ),
+    2: (
+        start:      768px,
+        max:        840px,
+        rootsize:   nth($rootsizeSeries, 3)
+    ),
+    3: (
+        start:      980px,
+        max:        1080px,
+        rootsize:   nth($rootsizeSeries, 4)
+    ),
+    4: (
+        start:      1280px,
+        max:        1440px,
+        rootsize:   nth($rootsizeSeries, 5)
+    )
+);
+
+// Set cap height to set to the baseline.
+// I found a calculator for the cap-height here:
+// http://codepen.io/elrumordelaluz/details/ZGpvvE
+// Here are some cap-height sizes to get you started:
+// Georgia: 0.66, Times / Times New Roman: 0.65, Palatino: 0.52
+// Lucida Grande: 0.72, Helvetica: 0.65, Helvetica Neue: 0.71, Verdana: 0.76, Tahoma: 0.76
+// Open Sans: 0.78, Inconsolata: 0.66 (cap-position )
+$sans: (
+    font-family: '"Open Sans", Arial, sans-serif',
+    regular: normal,
+    bold: bold,
+    cap-height: 0.78,
+    cap-position: 0.525
+);
+$title: (
+    font-family: '"Source Sans Pro", sans-serif',
+    regular: normal,
+    bold: bold,
+    cap-height: 0.71
+);
+$serif: (
+    font-family: 'Georgia, serif',
+    regular: normal,
+    bold: bold,
+    cap-height: 0.69
+) !default;
+
+$monospace: (
+    font-family: 'Inconsolata, monospace, Courier, Menlo',
+    regular: 400,
+    cap-height: 0.66,
+    cap-position: 0.58
+);
+
+// debug baseline grid
+$debug-grid: true;
+// debug typeset elements, their cap height, and baseline
+$debug-type: true;
+// show some information about the current breakpoint and it's config
+$debug-breakpoints: true;
+
+$debug-allow: false;

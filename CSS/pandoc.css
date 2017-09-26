@@ -1,0 +1,576 @@
+/* @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,italic');
+ @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400'); */
+
+/*
+https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,italic&subset=latin,latin-ext
+*/
+
+/*
+There is a bug with pandoc and SSL TLS that makes impossible to fetch HTTPS images
+and fonts. Error message is:
+pandoc: Could not fetch https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,italic
+TlsExceptionHostPort (HandshakeFailed Error_EOF) "fonts.googleapis.com" 443
+
+This apparently comes from a bug in the TLS library, see:
+https://github.com/rstudio/rmarkdown/issues/228
+https://github.com/vincenthz/hs-tls/issues/152
+https://stackoverflow.com/questions/44136481/render-code-for-google-chart-in-rmarkdown-rmd
+https://stackoverflow.com/questions/41561562/how-to-know-the-tls-version-install-and-how-to-upgrade-to-tls-v1-3
+
+I had to fetch and download manually all the google fonts and install them
+in a local folder, such that pandoc will find them and not try to download from
+google fonts api. See:
+http://www.thephphero.com/how-to-host-google-fonts-locally/
+*/
+
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: url('google_fonts/xjAJXh38I15wypJXxuGMBo4P5ICox8Kq3LLUNMylGO4.woff2') format('woff2');
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(google_fonts/DXI1ORHCpsQm3Vp6mXoaTegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans Regular'), local('OpenSans-Regular'), url(google_fonts/cJZKeOuBrn4kERxqtaUH3VtXRa8TVwTICgirnJhmVJw.woff2) format('woff2');
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'), url(google_fonts/MTP_ySUJH_bn48VBG8sNSugdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 200;
+  src: local('Source Sans Pro ExtraLight'), local('SourceSansPro-ExtraLight'), url(google_fonts/toadOcfmlt9b38dHJxOBGCVh0V6fR69OLaFLklYbiSk.woff2) format('woff2');
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url(google_fonts/toadOcfmlt9b38dHJxOBGOode0-EuMkY--TSyExeINg.woff2) format('woff2');
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(google_fonts/ODelI1aHBYDBqgeIAH2zlNV_2ngZ8dMf8fLgjYEouxg.woff2) format('woff2');
+}
+
+
+
+/*For Wordpress we use the same CSS but with some parts removed or changed.*/
+/* CSS compiled from SCSS */
+/* --------------------------------------- */
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, label, legend, caption, figcaption {
+  margin: 0 0;
+  padding: 0; }
+
+html {
+  font-size: 137.5%; }
+  @media (max-width: 79.9375em) {
+    html {
+      font-size: 137.5%; } }
+  @media (max-width: 61.1875em) {
+    html {
+      font-size: 125%; } }
+  @media (max-width: 47.9375em) {
+    html {
+      font-size: 112.5%; } }
+  @media (max-width: 29.9375em) {
+    html {
+      font-size: 100%; } }
+
+/*We will use the following trick in order to integrate the CSS into wordpress theme
+without interfering with the theme's own CSS styles in other parts of the layout (menus, widgets, etc).
+Wordpress has currently a root font size of 10px. We want to use the rootsize 22px for the largest
+viewport size. Therefore, we will multiply all rem values in the CSS file by 2.2.
+*/
+.container {
+  max-width: 420px;
+  margin: 0 auto; }
+  @media (min-width: 30em) {
+    .container {
+      max-width: 560px; } }
+  @media (min-width: 48em) {
+    .container {
+      max-width: 840px; } }
+  @media (min-width: 61.25em) {
+    .container {
+      max-width: 1080px; } }
+  @media (min-width: 80em) {
+    .container {
+      max-width: 1440px; } }
+  .container .column {
+    /*max-width: $type-measure; // good typographic measure*/
+    max-width: 32rem;
+    margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+  margin: 0 auto;
+  color: #444;
+  background: #fefefe; }
+
+p {
+    /* As the base font size (paragraph `p`) we will use 16px and a lineheight of
+    24px. We define the baseline grid spacing to 24px, with lineheight of 1
+    baseline unit. In order to keep the approximate same proportions for
+    different screen sizes we will change the root size for the different break
+    points. We express the paragraph font size in relative em (rem), relative to
+    the root size: p font size = 16 px = 0.5*1.5 rem * 24 px. Then, the lineheight can
+    be expressed as: 1 root size unit = 1 * 24px = 24px.
+
+    Importantly, we choose to use the megatype script to adjust lineheight, top and
+    bottom margins such that all elements snap to the baseline grid. That means
+    that the lineheight will always be a multiple of the baseline root size.
+
+    For the headers, we choose to set increasing font sizes, and always set the lineheight
+    to 1.5 times the header font size, even if the lineheight will be adjusted to snap
+    to the baseline grid, which will result in a lineheight multiple of 24 px.
+
+    The leader (top margin) and trailer (bottom margin) are also expressed in
+    root baseline units.
+    */
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.33333;
+  position: relative;
+  top: 0.23563rem;
+  margin-bottom: 1rem;
+    /*
+    // we can apply a single breakpoint, starting with breakpoint key: 1
+    @include min-width(1) {
+        @include typeset($font: $sans, $fontsize: 16px, $lineheight: 1.5, $leader: 1, $trailer: 2);
+    }
+
+    // or set several keys at once
+    @include min-width(2 3 4) {
+        @include typeset($sans, 18px, 2, $leader: 1, $trailer: 3);
+    }
+    */ }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    p {
+      line-height: 1rem; } }
+
+h1, h2, h3, h4, h5, h6 {
+  color: #111;
+  font-weight: normal; }
+
+h4, h5, h6 {
+  font-weight: 500; }
+
+h1 {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 2.75rem;
+  line-height: 1.81818;
+  position: relative;
+  top: 1.57063rem;
+  margin-bottom: 3rem;
+  font-weight: 200; }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    h1 {
+      line-height: 5rem; } }
+
+h2 {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 2.2rem;
+  line-height: 1.36364;
+  position: relative;
+  top: 2.76588rem;
+  margin-bottom: 4rem;
+  font-weight: 200; }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    h2 {
+      line-height: 3rem; } }
+
+h3 {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.33333;
+  position: relative;
+  top: 1.42438rem;
+  margin-bottom: 3rem; }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    h3 {
+      line-height: 2rem; } }
+
+h4 {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.81818;
+  position: relative;
+  top: 0.59037rem;
+  margin-bottom: 1rem; }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    h4 {
+      line-height: 2rem; } }
+
+h5 {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.25;
+  position: relative;
+  top: 1.21487rem;
+  margin-bottom: 1rem;
+  font-weight: 600; }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    h5 {
+      line-height: 1rem; } }
+
+h6 {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.33333;
+  position: relative;
+  top: 1.23563rem;
+  margin-bottom: 2rem;
+  font-weight: 500; }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    h6 {
+      line-height: 1rem; } }
+
+.title {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 3rem;
+  line-height: 1.33333;
+  position: relative;
+  top: 0.98188rem;
+  margin-bottom: 4rem;
+  font-weight: 200; }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .title {
+      line-height: 4rem; } }
+
+.author {
+  font-weight: 300;
+  text-align: center; }
+
+.date {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.11111;
+  position: relative;
+  top: 1.17338rem;
+  margin-bottom: 4rem;
+  font-weight: 300;
+  text-align: center; }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .date {
+      line-height: 1rem; } }
+
+hr {
+  display: block;
+  height: 2px;
+  border: 0;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #eee;
+  padding-top: 1rem;
+  padding-bottom: 1rem; }
+
+ul {
+  list-style: disc outside;
+  padding-left: 1rem; }
+  ul li {
+    padding-left: 0.2rem; }
+
+ol {
+  padding-left: 0.7rem; }
+
+ol, ul {
+  padding-bottom: 1rem; }
+
+li {
+  text-align: left;
+  font-size: 0.75rem;
+  line-height: 1.33333;
+  position: relative;
+  top: 0.23563rem;
+  margin-bottom: 0; }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    li {
+      line-height: 1rem; } }
+
+a {
+  color: #169dbf;
+  text-decoration: none;
+  background-image: linear-gradient(to bottom, transparent 50%, rgba(22, 157, 191, 0.6) 50%);
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  background-position: 0 1.05em;
+  background-position: 0 calc(43% + 0.44em + 2px);
+  cursor: pointer; }
+  a:hover {
+    background-image: linear-gradient(to bottom, transparent 50%, rgba(22, 157, 191, 0.8) 50%);
+    color: #169dbf; }
+  .no-cssgradients a {
+    text-decoration: underline; }
+
+sub, sup {
+  font-size: smaller;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sup {
+  top: -0.5em; }
+
+sub {
+  bottom: -0.25em; }
+
+/*This is the default style applied in the HTML header by Pandoc.
+Pandoc translates Markdown code block with no language to <pre><code>, and we want
+to display them as normal pre block.
+*/
+code {
+  white-space: inherit; }
+
+/*Change the style of the scrollbar in order not to break vertical rhythm.
+We use an overlaid scroll bar just at the bottom of the <div> containing the <pre><code> block.
+The scrollbar with overlay style will not change the height of the element.
+*/
+div.sourceCode {
+  overflow-x: overlay;
+  overflow-y: hidden; }
+
+pre.sourceCode {
+  overflow-x: inherit;
+  white-space: pre; }
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 2px; }
+
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px; }
+
+::-webkit-scrollbar-thumb {
+  background: #e1e1e1;
+  border: 0px none #ffffff;
+  border-radius: 50px; }
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f5f5f5; }
+
+::-webkit-scrollbar-thumb:active {
+  background: #c7c7c7; }
+
+::-webkit-scrollbar-track {
+  background: #666666;
+  border: 0px none #ffffff;
+  border-radius: 50px; }
+
+::-webkit-scrollbar-track:hover {
+  background: #666666; }
+
+::-webkit-scrollbar-track:active {
+  background: #333333; }
+
+::-webkit-scrollbar-corner {
+  background: transparent; }
+
+p code, li code {
+  background-color: #f3f3f3;
+  border-width: 0px; }
+
+pre {
+  border-radius: 0.15rem;
+  border-width: 0px;
+  border-color: #eeeeee;
+  border-style: solid;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: Inconsolata, monospace, Courier, Menlo;
+  font-size: 0.7rem;
+  line-height: 1.42857;
+  position: relative;
+  top: 0.25987rem;
+  margin-bottom: 1rem; }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    pre {
+      line-height: 1rem; } }
+
+code {
+  font-family: Inconsolata, monospace, Courier, Menlo;
+  font-size: 0.7rem; }
+
+/*When code is inline, use a smaller line-height in order not to introduce
+a shift to the next line. Because inline code has a different font, its box
+can be taller than the paragraph text line-height.
+*/
+p code, li code {
+  line-height: 0.85rem; }
+
+figure, div.figure {
+  display: block;
+  max-width: 100%;
+  position: relative;
+  margin-top: 2rem;
+  margin-bottom: 3rem; }
+
+img {
+  vertical-align: middle; }
+
+figure img {
+  border: none; }
+
+.caption, figcaption, caption {
+  font-size: 0.75rem;
+  line-height: 1.33333;
+  position: relative;
+  top: 1.23563rem;
+  margin-bottom: 2rem;
+  font-style: italic; }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .caption, figcaption, caption {
+      line-height: 1rem; } }
+
+blockquote p {
+  /*Simple gray rectangle on the left*/
+  padding-left: 1.5rem;
+  border-left: 0.5rem #EEE solid;
+  position: relative;
+  overflow: visible; }
+
+cite {
+  font-family: Georgia, serif;
+  display: block;
+  font-style: italic; }
+
+table {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-spacing: 0;
+  border-collapse: collapse; }
+
+table th {
+  background-color: #eee;
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd; }
+
+table td {
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  vertical-align: top; }
+
+th, td {
+  height: 1rem;
+  padding: 0 0.5rem 0 0.5rem;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.33333;
+  position: relative;
+  top: 0.23563rem;
+  margin-bottom: 0;
+  position: initial; }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    th, td {
+      line-height: 1rem; } }
+
+th {
+  font-weight: bold;
+  font-family: "Open Sans", Arial, sans-serif;
+  border-bottom: 2px solid #000000; }
+
+/*==================================*/
+/* NOT FONT SIZE RELATED */
+img {
+  max-width: 100%; }
+
+  /*a {
+    color: #0645ad;
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: #0b0080;
+  }
+
+  a:hover {
+    color: #06e;
+  }
+
+  a:active {
+    color: #faa700;
+  }
+
+  a:focus {
+    outline: thin dotted;
+  }
+
+  *::-moz-selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #000;
+  }
+
+  *::selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #000;
+  }
+
+  a::-moz-selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #0645ad;
+  }
+
+  a::selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #0645ad;
+  }
+  */
+blockquote {
+  color: #666666; }
+
+pre, code, kbd, samp {
+  color: #000; }
+
+b, strong {
+  font-weight: bold; }
+
+dfn {
+  font-style: italic; }
+
+ins {
+  background: #ff9;
+  color: #000;
+  text-decoration: none; }
+
+mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold; }
+
+dt {
+  font-weight: bold; }
+
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+  vertical-align: middle; }
+
+/*# sourceMappingURL=pandoc.css.map */
