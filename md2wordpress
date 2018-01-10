@@ -322,6 +322,13 @@ if __name__ == '__main__':
         # `\begin{align} ... \end{align}`
         # All these latex tags are already compatible with the QuickLatex syntax,
         # so there is no need to adapt them
+        # We just have to correct the double redundant notation
+        # `\[\begin{align} ... \end{align}\]`
+        for math in soup.find_all(name="span", attrs={'class':'math display'}):
+            s = math.string
+            s2 = re.sub(r'^\s*\\\[\\begin{align}\s*(.*)\s*\\end{align}\\\]\s*',
+                        r'\\begin{align}\n\1\n\\end{align}', s, re.DOTALL)
+            math.string = s2
         return str(soup)
 
     if useQuickLatex:

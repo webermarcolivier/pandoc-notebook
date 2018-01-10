@@ -18,6 +18,8 @@ fi
 # which will be transformed into the correct pandoc markdown syntax:
 #     ![... legend](Images/image.png){#fig:Marks2016_initiation width=60%}
 mdCorrectFigureCaption "${BASENAME}.md"
+mdCorrectFigureCaption "${BASENAME}.md"
+# Note: I don't know why but we need to run twice the script to substitute all captions.
 
 # Note: that any use of --filter pandoc-citeproc or --bibliography=FILE should come after the pandoc-fignos filter call.
 # Note: The bibliography file is set in the YAML metadata. We could also use the pandoc command-line option `--bibliography="${BIBLIOGRAPHY}"`
