@@ -230,14 +230,22 @@ New Latex commands can be defined by the `\newcommand` command inside the markdo
 
 Images can be inserted into Markdown documents in a variety of ways, each of one is not compatible with the external software that will convert markdown into PDF, html, or other document type. With Pandoc, the syntax is:
 
-![\emph{Phase transition in a growing population of toggle switches interfaced by QS leading to the high $u$ state.} (A) Time evolution of concentration $u$ in color code for an exponentially growing population of toggle switches interfaced by QS. $D=2$, cell cycle $\tau=50$, cell cycle deterministic/stochastic weight coefficient $\lambda = 0.8$, $V_{\text{ext}}=600\ \mu\text{m}^3$, $\alpha$ and $\beta$ are kept constant. During exponential growth, cells randomly jump between the two stable states, upon reaching a critical population size at $t \sim 349$ and $N \sim 144$, beyond which the majority of cells lock into the high $u$ state. $\lvert {\mkern 1.5mu\overline{\mkern-1.5mu M \mkern-1.5mu}\mkern 1.5mu} \rvert(t)$ exhibits large fluctuations at the beginning of the simulation due to small system size, then remains close to zero in the unordered state and finally reaches unity when entering the ordered state. (C) External volume $V_{\text{ext}}(t)$ (solid line) and total volume of the cells $\sum_i^{N(t)} V_i(t)$ (dashed line). Cell coupling gets stronger when the external volume decreases, due to higher concentration of signaling molecules in the environment. Intersection of both lines indicates a ratio of cell volume to external volume $r$ equal to the previous simulation with fixed system size. Beyond this point the coupling strength is stronger and leads to the phase transition. The increase in the system size $N$ with time enhances the phase transition.](Images/exponential_growth_lowU_panels.png){#fig:isingmodel1 width=60%}
+**Markdown syntax**
 
-Note that the figure is correctly rendered by the Jupyter notebook interface, **however the figure size directive is not taken into account**. The only way to change the image size in the jupyter interface, which uses standard markdown, is to use an HTML tags (see [python - How to Include image or picture in jupyter notebook - Stack Overflow](http://stackoverflow.com/questions/32370281/how-to-include-image-or-picture-in-jupyter-notebook)). However, images inserted by html tag will probably not get parsed correctly by pandoc (to verify).
+![ *Phase transition in a growing population of toggle switches interfaced by QS leading to the high $u$ state.* (A) Time evolution of concentration $u$ in color code for an exponentially growing population of toggle switches interfaced by QS.](Images/exponential_growth_lowU_panels.png){#fig:isingmodel1 width=60%}
 
-Also, we used a custom syntax for the figure captions, in order to be able to display the captions below the plot in a markdown rendered cell in the jupyter notebook. These captions will be corrected for the pandoc markdown syntax in the parser script, such that:
+**HTML syntax**
+
+![ *Phase transition in a growing population of toggle switches interfaced by QS leading to the high $u$ state.* (A) Time evolution of concentration $u$ in color code for an exponentially growing population of toggle switches interfaced by QS. ](Images/exponential_growth_lowU_panels.png){#fig:fig_id width="50%"}
+
+
+Note that in the case of the markdown syntax, the figure is correctly rendered by the Jupyter notebook interface, **however the figure size directive is not taken into account**. The only way to change the image size in the jupyter interface, which uses standard markdown, is to use an HTML tags (see [python - How to Include image or picture in jupyter notebook - Stack Overflow](http://stackoverflow.com/questions/32370281/how-to-include-image-or-picture-in-jupyter-notebook)). However, images inserted by html tag will probably not get parsed correctly by pandoc (to verify).
+
+We used a custom syntax for the figure captions, both for markdown and html, in order to be able to display the captions below the plot in a markdown rendered cell in the jupyter notebook. These captions will be converted to the pandoc markdown syntax in the parser script, such that:
 
 ```
-![](Images/image.png){#fig:fig_id width=60%}[[figure captions text.]]
+![](Images/image.png){#fig:fig_id width=60%}[[figure caption text.]]
+![ figure caption text. ](Images/image.png){#fig:fig_id width="50%"}
 ```
 
 displays the captions below the figure in the jupyter notebook. The markdown master file will be transformed into the correct pandoc markdown syntax:
