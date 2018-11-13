@@ -1,5 +1,28 @@
 #!/bin/bash
 
+OPTIND=1         # Reset in case getopts has been used previously in the shell.
+
+# Initialize our own variables:
+output_file=""
+verbose=0
+
+while getopts "h?vt" opt; do
+    case "$opt" in
+    h|\?)
+        show_help
+        exit 0
+        ;;
+    v)  verbose=1
+        ;;
+    t)  toc=true
+        ;;
+    esac
+done
+
+shift $((OPTIND-1))
+
+[ "$1" = "--" ] && shift
+
 INPUT_FILE=$1
 
 if [[ ${INPUT_FILE} =~ \.md$ ]]; then
@@ -24,17 +47,21 @@ mdCorrectFigureCaption "${BASENAME}.md"
 # Note: that any use of --filter pandoc-citeproc or --bibliography=FILE should come after the pandoc-fignos filter call.
 # Note: The bibliography file is set in the YAML metadata. We could also use the pandoc command-line option `--bibliography="${BIBLIOGRAPHY}"`
 
-pandoc "${BASENAME}.md" -o "${BASENAME}.pdf" \
-    --filter pandoc-fignos \
-    --filter pandoc-citeproc \
-    --latex-engine=xelatex
+options=("--filter" "pandoc-fignos" "--filter" "pandoc-citeproc" "--latex-engine=xelatex")
+if [ "$toc" = true ] ; then
+    echo "Adding table of content."
+    options+=("--toc")
+fi
+pandoc "${BASENAME}.md" -o "${BASENAME}.pdf" "${options[@]}"
+
 
 # Produce no highlight version for direct visualization with images self-contained
-pandoc "${BASENAME}.md" -o "${BASENAME}.self-contained.html" --to=html5 \
-    --filter pandoc-fignos \
-    --filter pandoc-citeproc \
-    --mathjax \
-    --self-contained
+options=("--to=html5" "--filter" "pandoc-fignos" "--filter" "pandoc-citeproc" "--mathjax" "--self-contained")
+if [ "$toc" = true ] ; then
+    echo "Adding table of content."
+    options+=("--toc")
+fi
+pandoc "${BASENAME}.md" -o "${BASENAME}.self-contained.html" "${options[@]}"
 
 # We need to include the MathJax script using the Content Delivery Network (CDN)
 # the script will get loaded from online location when page is rendered and
