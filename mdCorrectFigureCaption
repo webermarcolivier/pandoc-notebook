@@ -20,15 +20,14 @@ if __name__ == '__main__':
     # ![](image.png){#fig:fig_id width=60%}[[figure captions text.]]
     # converted to
     # ![ caption ]("image.png"){width="50%"}
-    content = re.sub(r'(?<!```\n)!\[.*\]\((.*)\)\{(.*)\}\[\[(.*?)\]\]', r'![\3](\1){\2}', content, re.DOTALL)
+    content = re.sub(r'(?<!```\n)!\[.*\]\((.*)\)\{(.*)\}\s{,3}\[\[(.*?)\]\]', r'![\3](\1){\2}', content, re.DOTALL)
 
     # Convert custom html images syntax
     # <img src="image.png" #fig:fig_id width="50%">[[ caption ]]
     # converted to
     # ![ caption ]("image.png"){#fig:fig_id width="50%"}
-    content = re.sub(r'(?<!```\n)<img\s+src=["\']([^"\']+)["\']\s*(.*)>\s*\[\[(.*?)\]\]', r'![\3](\1){\2}',
+    content = re.sub(r'(?<!```\n)<img\s+src=["\']([^"\']+)["\']\s*(.*)>\s{,3}\[\[(.*?)\]\]', r'![\3](\1){\2}',
                      content, re.DOTALL)
-    print()
 
     with filePath.open('w') as f:
         f.write(content)
