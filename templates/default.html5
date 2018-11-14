@@ -35,7 +35,6 @@ $endif$
 $for(header-includes)$
   $header-includes$
 $endfor$
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300" rel="stylesheet">
 </head>
 <body>
 <div class="container">
@@ -58,7 +57,7 @@ $endif$
 </header>
 $endif$
 $if(toc)$
-<nav id="$idprefix$TOC">
+<div id="$idprefix$TOC">
 $if(toctitle)$
 <h2 id="$idprefix$toctitle">$toctitle$</h2>
 $endif$

@@ -2,10 +2,11 @@
 ---
 author: "Marc Weber"
 title: "Markdown template for scientific report using pandoc"
-date: 2017.09.26
+date: 2018.11.14
 link-citations: "true"
-css: "../CSS/pandoc.css"
-bibliography: "bibliography.bib"
+#bibliography: "bibliography.bib"
+bibliography: "/users/lserrano/mweber/Research_cloud/Bibliography/library.bib"
+
 wordpress_site_url: "www.wordpress.org/site"
 wordpress_username: "username"
 wordpress_status: "draft"

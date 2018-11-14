@@ -29,10 +29,11 @@ fi
 # read getopt’s output this way to handle the quoting right:
 eval set -- "$PARSED"
 
+# Default values
 OUTFMT=all
 WORDPRESS=false
 TOC=false
-TOC_DEPTH=5
+TOC_DEPTH=3
 VERBOSE=false
 # now enjoy the options in order and nicely split until we see --
 while true; do
@@ -74,11 +75,16 @@ if [[ $# -ne 1 ]]; then
     exit 4
 fi
 
-echo "verbose: $VERBOSE, OUTFMT: $OUTFMT, wordpress: $WORDPRESS, toc: $TOC, toc-depth: $TOC_DEPTH, in: $1"
+# echo "verbose: $VERBOSE, OUTFMT: $OUTFMT, wordpress: $WORDPRESS, toc: $TOC, toc-depth: $TOC_DEPTH, in: $1"
 
 #==========================================================
 
 INPUT_FILE=$1
+DATA_DIR="/users/lserrano/mweber/Research_cloud/Python_mwTools/pandoc-notebook"
+OPTIONS_PANDOC=("--data-dir=$DATA_DIR" "--variable=css:$DATA_DIR/CSS/pandoc.css" "--variable=toctitle:Table of contents")
+# for value in "${OPTIONS_PANDOC[@]}"; do
+#     echo $value
+# done
 
 if [[ ${INPUT_FILE} =~ \.md$ ]]; then
     echo "input file type is Markdown."
@@ -104,25 +110,25 @@ if [[ $OUTFMT =~ ^(all)|(pdf)$ ]]; then
     # Note: that any use of --filter pandoc-citeproc or --bibliography=FILE should come after the pandoc-fignos filter
     # call. Note: The bibliography file is set in the YAML metadata. We could also use the pandoc command-line option
     # `--bibliography="${BIBLIOGRAPHY}"`
-
-    options=("--filter" "pandoc-fignos" "--filter" "pandoc-citeproc" "--latex-engine=xelatex")
+    OPTIONS=("${OPTIONS_PANDOC[@]}")
+    OPTIONS+=("--filter" "pandoc-fignos" "--filter" "pandoc-citeproc" "--pdf-engine=xelatex")
     if [ "$TOC" = true ] ; then
-        echo "Adding table of content."
-        options+=("--toc")
+        OPTIONS+=("--toc")
+        OPTIONS+=("--toc-depth=$TOC_DEPTH")
     fi
-    pandoc "${BASENAME}.md" -o "${BASENAME}.pdf" "${options[@]}"
+    pandoc "${BASENAME}.md" -o "${BASENAME}.pdf" "${OPTIONS[@]}"
 fi
 
 if [[ $OUTFMT =~ ^(all)|(html)$ ]]; then
     echo "Converting to self-contained html..."
+    OPTIONS=("${OPTIONS_PANDOC[@]}")
     # Produce no highlight version for direct visualization with images self-contained
-    options=("--to=html5" "--filter" "pandoc-fignos" "--filter" "pandoc-citeproc" "--mathjax" "--self-contained")
+    OPTIONS+=("--to=html5" "--filter" "pandoc-fignos" "--filter" "pandoc-citeproc" "--mathjax" "--self-contained")
     if [ "$TOC" = true ] ; then
-        echo "Adding table of content."
-        options+=("--toc")
-        # options+=("--toc-depth=$TOC_DEPTH")
+        OPTIONS+=("--toc")
+        OPTIONS+=("--toc-depth=$TOC_DEPTH")
     fi
-    pandoc "${BASENAME}.md" -o "${BASENAME}.self-contained.html" "${options[@]}"
+    pandoc "${BASENAME}.md" -o "${BASENAME}.self-contained.html" "${OPTIONS[@]}"
 
     # We need to include the MathJax script using the Content Delivery Network (CDN)
     # the script will get loaded from online location when page is rendered and
