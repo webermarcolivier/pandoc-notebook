@@ -1,27 +1,82 @@
 #!/bin/bash
+# Author: Marc Weber
 
-OPTIND=1         # Reset in case getopts has been used previously in the shell.
+#==========================================================
+# ARGUMENT PARSING USING enhanced getopt
 
-# Initialize our own variables:
-output_file=""
-verbose=0
+# saner programming env: these switches turn some bugs into errors
+set -o errexit -o pipefail -o noclobber -o nounset
 
-while getopts "h?vt" opt; do
-    case "$opt" in
-    h|\?)
-        show_help
-        exit 0
-        ;;
-    v)  verbose=1
-        ;;
-    t)  toc=true
-        ;;
+! getopt --test > /dev/null 
+if [[ ${PIPESTATUS[0]} -ne 4 ]]; then
+    echo "I’m sorry, `getopt --test` failed in this environment."
+    exit 1
+fi
+
+OPTIONS=tvo:
+LONGOPTS=outfmt:,toc,toc-depth:,wordpress,verbose
+
+# -use ! and PIPESTATUS to get exit code with errexit set
+# -temporarily store output to be able to check for errors
+# -activate quoting/enhanced mode (e.g. by writing out “--options”)
+# -pass arguments only via   -- "$@"   to separate them correctly
+! PARSED=$(getopt --options=$OPTIONS --longoptions=$LONGOPTS --name "$0" -- "$@")
+if [[ ${PIPESTATUS[0]} -ne 0 ]]; then
+    # e.g. return value is 1
+    #  then getopt has complained about wrong arguments to stdout
+    exit 2
+fi
+# read getopt’s output this way to handle the quoting right:
+eval set -- "$PARSED"
+
+OUTFMT=all
+WORDPRESS=false
+TOC=false
+TOC_DEPTH=5
+VERBOSE=false
+# now enjoy the options in order and nicely split until we see --
+while true; do
+    case "$1" in
+        -o|--outfmt)
+            OUTFMT="$2"
+            shift 2
+            ;;
+        -t|--toc)
+            TOC=true
+            shift
+            ;;
+        --toc-depth)
+            TOC_DEPTH="$2"
+            shift 2
+            ;;
+        --wordpress)
+            WORDPRESS=true
+            shift
+            ;;
+        -v|--verbose)
+            VERBOSE=true
+            shift
+            ;;
+        --)
+            shift
+            break
+            ;;
+        *)
+            echo "Programming error"
+            exit 3
+            ;;
     esac
 done
 
-shift $((OPTIND-1))
+# handle non-option arguments
+if [[ $# -ne 1 ]]; then
+    echo "$0: A single input file is required."
+    exit 4
+fi
 
-[ "$1" = "--" ] && shift
+echo "verbose: $VERBOSE, OUTFMT: $OUTFMT, wordpress: $WORDPRESS, toc: $TOC, toc-depth: $TOC_DEPTH, in: $1"
+
+#==========================================================
 
 INPUT_FILE=$1
 
@@ -44,33 +99,42 @@ mdCorrectFigureCaption "${BASENAME}.md"
 mdCorrectFigureCaption "${BASENAME}.md"
 # Note: I don't know why but we need to run twice the script to substitute all captions.
 
-# Note: that any use of --filter pandoc-citeproc or --bibliography=FILE should come after the pandoc-fignos filter call.
-# Note: The bibliography file is set in the YAML metadata. We could also use the pandoc command-line option `--bibliography="${BIBLIOGRAPHY}"`
+if [[ $OUTFMT =~ ^(all)|(pdf)$ ]]; then
+    echo "Converting to pdf..."
+    # Note: that any use of --filter pandoc-citeproc or --bibliography=FILE should come after the pandoc-fignos filter
+    # call. Note: The bibliography file is set in the YAML metadata. We could also use the pandoc command-line option
+    # `--bibliography="${BIBLIOGRAPHY}"`
 
-options=("--filter" "pandoc-fignos" "--filter" "pandoc-citeproc" "--latex-engine=xelatex")
-if [ "$toc" = true ] ; then
-    echo "Adding table of content."
-    options+=("--toc")
+    options=("--filter" "pandoc-fignos" "--filter" "pandoc-citeproc" "--latex-engine=xelatex")
+    if [ "$TOC" = true ] ; then
+        echo "Adding table of content."
+        options+=("--toc")
+    fi
+    pandoc "${BASENAME}.md" -o "${BASENAME}.pdf" "${options[@]}"
 fi
-pandoc "${BASENAME}.md" -o "${BASENAME}.pdf" "${options[@]}"
 
+if [[ $OUTFMT =~ ^(all)|(html)$ ]]; then
+    echo "Converting to self-contained html..."
+    # Produce no highlight version for direct visualization with images self-contained
+    options=("--to=html5" "--filter" "pandoc-fignos" "--filter" "pandoc-citeproc" "--mathjax" "--self-contained")
+    if [ "$TOC" = true ] ; then
+        echo "Adding table of content."
+        options+=("--toc")
+        # options+=("--toc-depth=$TOC_DEPTH")
+    fi
+    pandoc "${BASENAME}.md" -o "${BASENAME}.self-contained.html" "${options[@]}"
 
-# Produce no highlight version for direct visualization with images self-contained
-options=("--to=html5" "--filter" "pandoc-fignos" "--filter" "pandoc-citeproc" "--mathjax" "--self-contained")
-if [ "$toc" = true ] ; then
-    echo "Adding table of content."
-    options+=("--toc")
+    # We need to include the MathJax script using the Content Delivery Network (CDN)
+    # the script will get loaded from online location when page is rendered and
+    # MathJax script will render latex equations on the local browser.
+    # Note that using the CDN, online connection is needed in order to load the MathJax script.
+    insert_mathjax_script_in_html_header "${BASENAME}.self-contained.html"
 fi
-pandoc "${BASENAME}.md" -o "${BASENAME}.self-contained.html" "${options[@]}"
 
-# We need to include the MathJax script using the Content Delivery Network (CDN)
-# the script will get loaded from online location when page is rendered and
-# MathJax script will render latex equations on the local browser.
-# Note that using the CDN, online connection is needed in order to load the MathJax script.
-insert_mathjax_script_in_html_header "${BASENAME}.self-contained.html"
-
-# Note: the md2wordpress script needs some YAML configuration for wordpress site access
-# that should be present in the input markdown file.
-
-md2wordpress "${BASENAME}.md"
+if [[ "$WORDPRESS" = true ]] ; then
+    echo "Converting to adapted html and uploading to wordpress site..."
+    # Note: the md2wordpress script needs some YAML configuration for wordpress site access
+    # that should be present in the input markdown file.
+    md2wordpress "${BASENAME}.md"
+fi
 
